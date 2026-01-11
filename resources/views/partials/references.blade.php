@@ -27,36 +27,35 @@
                     <div class="swiper-slide">
                         <div @click="openLightbox({{ json_encode($project) }})"
                              class="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 w-full cursor-pointer h-full">
-                                <div class="relative w-full h-full overflow-hidden bg-gray-100">
-                                    <img src="{{ asset('images/references/' . $project['image']) }}"
-                                         alt="{{ $project['name'] }}"
-                                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="relative w-full h-full overflow-hidden bg-gray-100">
+                                <img src="{{ asset('images/references/' . $project['image']) }}"
+                                     alt="{{ $project['name'] }}"
+                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                                    <!-- Category Badge -->
-                                    <div class="absolute top-2 right-2">
-                                        <span class="inline-block px-2 py-1 bg-primary/90 backdrop-blur-sm text-white rounded-full text-xs font-semibold">
-                                            {{ $project['category'] }}
-                                        </span>
-                                    </div>
+                                <!-- Category Badge -->
+                                <div class="absolute top-2 right-2">
+                                    <span class="inline-block px-2 py-1 bg-primary/90 backdrop-blur-sm text-white rounded-full text-xs font-semibold">
+                                        {{ $project['category'] }}
+                                    </span>
+                                </div>
 
-                                    <!-- Project Info on Hover -->
-                                    <div class="absolute inset-0 p-3 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <h3 class="text-white font-bold text-xs mb-0.5 leading-tight line-clamp-2">
-                                            {{ $project['name'] }}
-                                        </h3>
-                                        <p class="text-white/90 text-[10px] leading-tight line-clamp-2">
-                                            {{ $project['description'] }}
-                                        </p>
-                                    </div>
+                                <!-- Project Info on Hover -->
+                                <div class="absolute inset-0 p-3 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <h3 class="text-white font-bold text-xs mb-0.5 leading-tight line-clamp-2">
+                                        {{ $project['name'] }}
+                                    </h3>
+                                    <p class="text-white/90 text-[10px] leading-tight line-clamp-2">
+                                        {{ $project['description'] }}
+                                    </p>
+                                </div>
 
-                                    <!-- Click indicator -->
-                                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <div class="bg-white/20 backdrop-blur-sm rounded-full p-2">
-                                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
-                                            </svg>
-                                        </div>
+                                <!-- Click indicator -->
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <div class="bg-white/20 backdrop-blur-sm rounded-full p-2">
+                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                                        </svg>
                                     </div>
                                 </div>
                             </div>
