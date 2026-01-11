@@ -1,5 +1,5 @@
 <footer class="bg-secondary text-white">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 md:pt-12 pb-8">
         <div class="grid md:grid-cols-4 gap-8 mb-6">
             <!-- Company Info -->
             <div class="md:col-span-2">
