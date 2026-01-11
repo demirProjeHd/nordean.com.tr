@@ -30,7 +30,7 @@
                     <div class="swiper-slide">
                         <div @click="openLightbox(<?php echo e(json_encode($project)); ?>)"
                              class="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 w-full cursor-pointer h-full">
-                                <div class="relative w-full h-[120px] overflow-hidden bg-gray-100">
+                                <div class="relative w-full h-full overflow-hidden bg-gray-100">
                                     <img src="<?php echo e(asset('images/references/' . $project['image'])); ?>"
                                          alt="<?php echo e($project['name']); ?>"
                                          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
