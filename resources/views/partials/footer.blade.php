@@ -6,8 +6,8 @@
                 <div class="flex items-center gap-4 mb-4">
                     <img src="{{ asset('images/nordean-logo.png') }}" alt="NORDEAN Logo" class="h-12 w-auto">
                     <div class="border-l border-white/30 pl-4">
-                        <h3 class="text-2xl font-bold text-white tracking-wide leading-none mb-1">NORDEAN</h3>
-                        <p class="text-xs text-primary font-semibold tracking-wider leading-none">{{ __('messages.footer.subtitle') }}</p>
+                        <h3 class="font-bold text-white tracking-wide leading-none mb-1" style="font-size: 23px;">NORDEAN</h3>
+                        <p class="text-primary font-semibold tracking-wider leading-none" style="font-size: 11px;">{{ __('messages.footer.subtitle') }}</p>
                     </div>
                 </div>
                 <p class="text-sm text-white/80 mb-4 max-w-md leading-relaxed">

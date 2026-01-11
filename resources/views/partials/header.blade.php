@@ -6,8 +6,8 @@
                 <a href="{{ route('home') }}" class="flex items-center gap-3">
                     <img src="{{ asset('images/nordean-logo.png') }}" alt="NORDEAN Logo" class="h-16 w-auto">
                     <div class="hidden sm:block border-l border-gray-300 pl-3">
-                        <div class="text-lg font-bold text-gray-900 leading-none tracking-wide">NORDEAN</div>
-                        <div class="text-xs font-semibold text-primary leading-none tracking-wider">{{ __('messages.footer.subtitle') }}</div>
+                        <div class="font-bold text-gray-900 leading-none tracking-wide" style="font-size: 17px;">NORDEAN</div>
+                        <div class="font-semibold text-primary leading-none tracking-wider" style="font-size: 11px;">{{ __('messages.footer.subtitle') }}</div>
                     </div>
                 </a>
             </div>
