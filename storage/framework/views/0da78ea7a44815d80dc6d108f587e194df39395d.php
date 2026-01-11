@@ -82,7 +82,7 @@
                 </button>
 
                 <!-- Pagination Dots -->
-                <div class="references-pagination flex gap-2 min-w-[80px] justify-center"></div>
+                <div class="references-pagination flex gap-2 w-auto justify-center"></div>
 
                 <!-- Next Button -->
                 <button class="references-button-next w-11 h-11 flex items-center justify-center rounded-full bg-primary hover:bg-primary/90 text-white transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"

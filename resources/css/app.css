@@ -82,6 +82,12 @@ html {
   }
 }
 
+/* Swiper pagination container - prevent 100% width */
+.swiper-pagination {
+  width: auto !important;
+  max-width: fit-content !important;
+}
+
 .swiper-pagination-bullet {
   width: 8px;
   height: 8px;

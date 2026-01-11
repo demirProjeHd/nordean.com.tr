@@ -129,94 +129,127 @@
                 </h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Floor Solutions -->
-                <div class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100">
-                    <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
-                        <img src="<?php echo e(asset('images/acoustic-floating-floor-installation-with-insulati.jpg')); ?>"
-                             alt="<?php echo e(__('messages.solutions.floor')); ?>"
-                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                        <div class="absolute bottom-3 left-3 p-2.5 bg-primary rounded-lg shadow-lg">
-                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
-                            </svg>
+            <!-- Swiper Container -->
+            <div class="swiper solutions-swiper max-w-[1216px] mx-auto px-4">
+                <div class="swiper-wrapper">
+                    <!-- Floor Solutions -->
+                    <div class="swiper-slide">
+                        <div class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 h-full">
+                            <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
+                                <img src="<?php echo e(asset('images/acoustic-floating-floor-installation-with-insulati.jpg')); ?>"
+                                     alt="<?php echo e(__('messages.solutions.floor')); ?>"
+                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                                <div class="absolute bottom-3 left-3 p-2.5 bg-primary rounded-lg shadow-lg">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+                                    <?php echo e(__('messages.solutions.floor')); ?>
+
+                                </h3>
+                                <p class="text-sm text-gray-600 leading-relaxed"><?php echo e(__('messages.solutions.floor_desc')); ?></p>
+                            </div>
                         </div>
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
-                            <?php echo e(__('messages.solutions.floor')); ?>
 
-                        </h3>
-                        <p class="text-sm text-gray-600 leading-relaxed"><?php echo e(__('messages.solutions.floor_desc')); ?></p>
-                    </div>
-                </div>
+                    <!-- Wall Solutions -->
+                    <div class="swiper-slide">
+                        <div class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 h-full">
+                            <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
+                                <img src="<?php echo e(asset('images/soundproof-wall-with-acoustic-panels-installation.jpg')); ?>"
+                                     alt="<?php echo e(__('messages.solutions.wall')); ?>"
+                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                                <div class="absolute bottom-3 left-3 p-2.5 bg-primary rounded-lg shadow-lg">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+                                    <?php echo e(__('messages.solutions.wall')); ?>
 
-                <!-- Wall Solutions -->
-                <div class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100">
-                    <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
-                        <img src="<?php echo e(asset('images/soundproof-wall-with-acoustic-panels-installation.jpg')); ?>"
-                             alt="<?php echo e(__('messages.solutions.wall')); ?>"
-                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                        <div class="absolute bottom-3 left-3 p-2.5 bg-primary rounded-lg shadow-lg">
-                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                            </svg>
+                                </h3>
+                                <p class="text-sm text-gray-600 leading-relaxed"><?php echo e(__('messages.solutions.wall_desc')); ?></p>
+                            </div>
                         </div>
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
-                            <?php echo e(__('messages.solutions.wall')); ?>
 
-                        </h3>
-                        <p class="text-sm text-gray-600 leading-relaxed"><?php echo e(__('messages.solutions.wall_desc')); ?></p>
-                    </div>
-                </div>
+                    <!-- Ceiling Solutions -->
+                    <div class="swiper-slide">
+                        <div class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 h-full">
+                            <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
+                                <img src="<?php echo e(asset('images/acoustic-ceiling-insulation-with-suspended-system.jpg')); ?>"
+                                     alt="<?php echo e(__('messages.solutions.ceiling')); ?>"
+                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                                <div class="absolute bottom-3 left-3 p-2.5 bg-primary rounded-lg shadow-lg">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+                                    <?php echo e(__('messages.solutions.ceiling')); ?>
 
-                <!-- Ceiling Solutions -->
-                <div class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100">
-                    <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
-                        <img src="<?php echo e(asset('images/acoustic-ceiling-insulation-with-suspended-system.jpg')); ?>"
-                             alt="<?php echo e(__('messages.solutions.ceiling')); ?>"
-                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                        <div class="absolute bottom-3 left-3 p-2.5 bg-primary rounded-lg shadow-lg">
-                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"/>
-                            </svg>
+                                </h3>
+                                <p class="text-sm text-gray-600 leading-relaxed"><?php echo e(__('messages.solutions.ceiling_desc')); ?></p>
+                            </div>
                         </div>
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
-                            <?php echo e(__('messages.solutions.ceiling')); ?>
 
-                        </h3>
-                        <p class="text-sm text-gray-600 leading-relaxed"><?php echo e(__('messages.solutions.ceiling_desc')); ?></p>
-                    </div>
-                </div>
+                    <!-- Vibration Solutions -->
+                    <div class="swiper-slide">
+                        <div class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 h-full">
+                            <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
+                                <img src="<?php echo e(asset('images/industrial-vibration-damping-system-with-rubber-ma.jpg')); ?>"
+                                     alt="<?php echo e(__('messages.solutions.vibration')); ?>"
+                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                                <div class="absolute bottom-3 left-3 p-2.5 bg-primary rounded-lg shadow-lg">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+                                    <?php echo e(__('messages.solutions.vibration')); ?>
 
-                <!-- Vibration Solutions -->
-                <div class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100">
-                    <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
-                        <img src="<?php echo e(asset('images/industrial-vibration-damping-system-with-rubber-ma.jpg')); ?>"
-                             alt="<?php echo e(__('messages.solutions.vibration')); ?>"
-                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                        <div class="absolute bottom-3 left-3 p-2.5 bg-primary rounded-lg shadow-lg">
-                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                            </svg>
+                                </h3>
+                                <p class="text-sm text-gray-600 leading-relaxed"><?php echo e(__('messages.solutions.vibration_desc')); ?></p>
+                            </div>
                         </div>
                     </div>
-                    <div class="p-5">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
-                            <?php echo e(__('messages.solutions.vibration')); ?>
-
-                        </h3>
-                        <p class="text-sm text-gray-600 leading-relaxed"><?php echo e(__('messages.solutions.vibration_desc')); ?></p>
-                    </div>
                 </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="flex items-center justify-center gap-2 mt-8">
+                <!-- Previous Button -->
+                <button class="solutions-button-prev w-11 h-11 flex items-center justify-center rounded-full bg-white hover:bg-primary hover:text-white text-gray-900 transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
+                        aria-label="Previous solutions">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+
+                <!-- Pagination Dots -->
+                <div class="solutions-pagination flex gap-2 w-auto justify-center"></div>
+
+                <!-- Next Button -->
+                <button class="solutions-button-next w-11 h-11 flex items-center justify-center rounded-full bg-primary hover:bg-primary/90 text-white transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
+                        aria-label="Next solutions">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
             </div>
         </div>
     </section>
@@ -323,7 +356,7 @@
                     </button>
 
                     <!-- Pagination Dots -->
-                    <div class="products-pagination flex gap-2 min-w-[80px] justify-center"></div>
+                    <div class="products-pagination flex gap-2 w-auto justify-center"></div>
 
                     <!-- Next Button -->
                     <button class="products-button-next w-11 h-11 flex items-center justify-center rounded-full bg-primary hover:bg-primary/90 text-white transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
