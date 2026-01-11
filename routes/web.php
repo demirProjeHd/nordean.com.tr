@@ -1,0 +1,23 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ContactController;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application.
+|
+*/
+
+// Main Routes
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Language Switcher
+Route::get('/lang/{locale}', [HomeController::class, 'changeLanguage'])->name('lang.switch');
+
+// Contact Form
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
