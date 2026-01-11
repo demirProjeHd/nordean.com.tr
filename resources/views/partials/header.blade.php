@@ -1,4 +1,4 @@
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200" x-data="{ mobileMenuOpen: false }">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white backdrop-blur-md border-b border-gray-200" x-data="{ mobileMenuOpen: false }">
     <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-20 items-center justify-between">
             <!-- Logo -->
