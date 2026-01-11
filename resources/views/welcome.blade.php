@@ -240,20 +240,20 @@
                         @foreach($chunks as $chunkIndex => $categoryChunk)
                         <div class="min-w-full flex-shrink-0">
                             <!-- Products Grid -->
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1216px] mx-auto px-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-[1216px] mx-auto px-4">
                                 @foreach($categoryChunk as $index => $category)
                                 <div @click="openLightbox({{ json_encode($category) }})"
                                      class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 cursor-pointer">
-                                    <div class="relative w-full h-[200px] overflow-hidden bg-gray-100">
+                                    <div class="relative w-full h-[180px] md:h-[200px] lg:h-[220px] overflow-hidden bg-gray-100">
                                         <img src="{{ asset('images/' . $category['image']) }}"
                                              alt="{{ $category['name'] }}"
                                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                                         <!-- Icon Badge -->
-                                        <div class="absolute top-3 left-3">
-                                            <div class="w-12 h-12 bg-white/90 backdrop-blur-sm rounded-lg flex items-center justify-center">
-                                                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <div class="absolute top-2 left-2 md:top-3 md:left-3">
+                                            <div class="w-10 h-10 md:w-12 md:h-12 bg-white/90 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                                                <svg class="w-5 h-5 md:w-6 md:h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     @if($category['icon'] == 'floor')
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
                                                     @elseif($category['icon'] == 'layers')
@@ -273,8 +273,8 @@
 
                                         <!-- Click indicator -->
                                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                            <div class="bg-white/20 backdrop-blur-sm rounded-full p-3">
-                                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <div class="bg-white/20 backdrop-blur-sm rounded-full p-2 md:p-3">
+                                                <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
                                                 </svg>
                                             </div>
@@ -282,15 +282,15 @@
                                     </div>
 
                                     <!-- Card Content -->
-                                    <div class="p-4">
-                                        <h3 class="text-lg font-bold text-gray-900 mb-1 line-clamp-1">
+                                    <div class="p-3 md:p-4">
+                                        <h3 class="text-base md:text-lg font-bold text-gray-900 mb-1 line-clamp-1">
                                             {{ $category['name'] }}
                                         </h3>
-                                        <p class="text-sm text-gray-600 line-clamp-2 mb-3">
+                                        <p class="text-xs md:text-sm text-gray-600 line-clamp-2 mb-2 md:mb-3">
                                             {{ $category['description'] }}
                                         </p>
-                                        <div class="flex items-center gap-2 text-xs text-gray-500">
-                                            <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <div class="flex items-center gap-1.5 md:gap-2 text-xs text-gray-500">
+                                            <svg class="w-3.5 h-3.5 md:w-4 md:h-4 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                                             </svg>
                                             <span class="line-clamp-1">{{ $category['applications'] }}</span>
