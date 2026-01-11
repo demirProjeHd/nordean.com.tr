@@ -15,23 +15,18 @@
         </div>
 
         <!-- References Slider -->
-        <div class="relative" x-data="referencesSlider()" x-on:keydown.escape.window="closeLightbox()">
-            <!-- Slider Container -->
-            <div class="overflow-hidden">
-                <div class="flex transition-transform duration-500 ease-out"
-                     :style="`transform: translateX(-${currentSlide * 100}%)`">
-                    @php
-                        $projects = __('messages.references.projects');
-                        $chunks = array_chunk($projects, 8);
-                    @endphp
+        <div class="relative" x-data="referencesLightbox()" x-on:keydown.escape.window="closeLightbox()">
+            @php
+                $projects = __('messages.references.projects');
+            @endphp
 
-                    @foreach($chunks as $chunkIndex => $projectChunk)
-                    <div class="min-w-full flex-shrink-0">
-                        <!-- References Grid -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-[1216px] mx-auto px-4">
-                            @foreach($projectChunk as $index => $project)
-                            <div @click="openLightbox({{ json_encode($project) }})"
-                                 class="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 w-full cursor-pointer">
+            <!-- Swiper Container -->
+            <div class="swiper references-swiper max-w-[1216px] mx-auto px-4">
+                <div class="swiper-wrapper">
+                    @foreach($projects as $index => $project)
+                    <div class="swiper-slide">
+                        <div @click="openLightbox({{ json_encode($project) }})"
+                             class="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 w-full cursor-pointer h-full">
                                 <div class="relative w-full h-[120px] overflow-hidden bg-gray-100">
                                     <img src="{{ asset('images/references/' . $project['image']) }}"
                                          alt="{{ $project['name'] }}"
@@ -67,44 +62,33 @@
                             </div>
                             @endforeach
                         </div>
+                        </div>
                     </div>
                     @endforeach
                 </div>
             </div>
 
-            @if(count($chunks) > 1)
             <!-- Navigation -->
             <div class="flex items-center justify-center gap-4 mt-8">
                 <!-- Previous Button -->
-                <button @click="prevSlide()"
-                        class="p-3 rounded-full bg-white hover:bg-primary hover:text-white text-gray-900 transition-all shadow-md hover:shadow-lg"
+                <button class="references-button-prev p-3 rounded-full bg-white hover:bg-primary hover:text-white text-gray-900 transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                         aria-label="Previous references">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                     </svg>
                 </button>
 
-                <!-- Progress Dots -->
-                <div class="flex gap-2">
-                    @foreach($chunks as $index => $chunk)
-                    <button @click="goToSlide({{ $index }})"
-                            class="h-2 rounded-full transition-all"
-                            :class="currentSlide === {{ $index }} ? 'bg-primary w-8' : 'bg-gray-300 w-2 hover:bg-gray-400'"
-                            aria-label="Go to page {{ $index + 1 }}">
-                    </button>
-                    @endforeach
-                </div>
+                <!-- Pagination Dots -->
+                <div class="references-pagination flex gap-2"></div>
 
                 <!-- Next Button -->
-                <button @click="nextSlide()"
-                        class="p-3 rounded-full bg-primary hover:bg-primary/90 text-white transition-all shadow-md hover:shadow-lg"
+                <button class="references-button-next p-3 rounded-full bg-primary hover:bg-primary/90 text-white transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                         aria-label="Next references">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                     </svg>
                 </button>
             </div>
-            @endif
 
             <!-- Lightbox Modal -->
             <div x-show="lightboxOpen"
@@ -186,52 +170,21 @@
 
 @push('scripts')
 <script>
-function referencesSlider() {
+function referencesLightbox() {
     return {
-        currentSlide: 0,
-        totalSlides: {{ count($chunks) }},
-        autoplayInterval: null,
         lightboxOpen: false,
         selectedProject: null,
-        init() {
-            if (this.totalSlides > 1) {
-                this.startAutoplay();
-            }
-        },
-        nextSlide() {
-            this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
-            this.resetAutoplay();
-        },
-        prevSlide() {
-            this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
-            this.resetAutoplay();
-        },
-        goToSlide(index) {
-            this.currentSlide = index;
-            this.resetAutoplay();
-        },
-        startAutoplay() {
-            this.autoplayInterval = setInterval(() => {
-                this.nextSlide();
-            }, 5000);
-        },
-        resetAutoplay() {
-            if (this.autoplayInterval) {
-                clearInterval(this.autoplayInterval);
-                this.startAutoplay();
-            }
-        },
         openLightbox(project) {
             this.selectedProject = project;
             this.lightboxOpen = true;
-            document.body.style.overflow = 'hidden'; // Prevent body scroll
+            document.body.style.overflow = 'hidden';
         },
         closeLightbox() {
             this.lightboxOpen = false;
-            document.body.style.overflow = ''; // Restore body scroll
+            document.body.style.overflow = '';
             setTimeout(() => {
                 this.selectedProject = null;
-            }, 300); // Wait for transition to complete
+            }, 300);
         }
     }
 }

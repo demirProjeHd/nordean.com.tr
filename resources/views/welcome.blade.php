@@ -227,23 +227,18 @@
             </div>
 
             <!-- Products Slider -->
-            <div class="relative" x-data="productsSlider()" x-on:keydown.escape.window="closeLightbox()">
-                <!-- Slider Container -->
-                <div class="overflow-hidden">
-                    <div class="flex transition-transform duration-500 ease-out"
-                         :style="`transform: translateX(-${currentSlide * 100}%)`">
-                        @php
-                            $categories = __('messages.products.categories');
-                            $chunks = array_chunk($categories, 3);
-                        @endphp
+            <div class="relative" x-data="productsLightbox()" x-on:keydown.escape.window="closeLightbox()">
+                @php
+                    $categories = __('messages.products.categories');
+                @endphp
 
-                        @foreach($chunks as $chunkIndex => $categoryChunk)
-                        <div class="min-w-full flex-shrink-0">
-                            <!-- Products Grid -->
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-[1216px] mx-auto px-4">
-                                @foreach($categoryChunk as $index => $category)
-                                <div @click="openLightbox({{ json_encode($category) }})"
-                                     class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 cursor-pointer">
+                <!-- Swiper Container -->
+                <div class="swiper products-swiper max-w-[1216px] mx-auto px-4">
+                    <div class="swiper-wrapper">
+                        @foreach($categories as $index => $category)
+                        <div class="swiper-slide">
+                            <div @click="openLightbox({{ json_encode($category) }})"
+                                 class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 cursor-pointer h-full">
                                     <div class="relative w-full h-[180px] md:h-[200px] lg:h-[220px] overflow-hidden bg-gray-100">
                                         <img src="{{ asset('images/' . $category['image']) }}"
                                              alt="{{ $category['name'] }}"
@@ -297,46 +292,35 @@
                                         </div>
                                     </div>
                                 </div>
-                                @endforeach
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         @endforeach
                     </div>
                 </div>
 
-                @if(count($chunks) > 1)
                 <!-- Navigation -->
                 <div class="flex items-center justify-center gap-4 mt-8">
                     <!-- Previous Button -->
-                    <button @click="prevSlide()"
-                            class="p-3 rounded-full bg-white hover:bg-primary hover:text-white text-gray-900 transition-all shadow-md hover:shadow-lg"
+                    <button class="products-button-prev p-3 rounded-full bg-white hover:bg-primary hover:text-white text-gray-900 transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                             aria-label="Previous products">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                         </svg>
                     </button>
 
-                    <!-- Progress Dots -->
-                    <div class="flex gap-2">
-                        @foreach($chunks as $index => $chunk)
-                        <button @click="goToSlide({{ $index }})"
-                                class="h-2 rounded-full transition-all"
-                                :class="currentSlide === {{ $index }} ? 'bg-primary w-8' : 'bg-gray-300 w-2 hover:bg-gray-400'"
-                                aria-label="Go to page {{ $index + 1 }}">
-                        </button>
-                        @endforeach
-                    </div>
+                    <!-- Pagination Dots -->
+                    <div class="products-pagination flex gap-2"></div>
 
                     <!-- Next Button -->
-                    <button @click="nextSlide()"
-                            class="p-3 rounded-full bg-primary hover:bg-primary/90 text-white transition-all shadow-md hover:shadow-lg"
+                    <button class="products-button-next p-3 rounded-full bg-primary hover:bg-primary/90 text-white transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                             aria-label="Next products">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                         </svg>
                     </button>
                 </div>
-                @endif
 
                 <!-- Lightbox Modal -->
                 <div x-show="lightboxOpen"
@@ -451,52 +435,21 @@
 
     @push('scripts')
     <script>
-    function productsSlider() {
+    function productsLightbox() {
         return {
-            currentSlide: 0,
-            totalSlides: {{ count($chunks) }},
-            autoplayInterval: null,
             lightboxOpen: false,
             selectedCategory: null,
-            init() {
-                if (this.totalSlides > 1) {
-                    this.startAutoplay();
-                }
-            },
-            nextSlide() {
-                this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
-                this.resetAutoplay();
-            },
-            prevSlide() {
-                this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
-                this.resetAutoplay();
-            },
-            goToSlide(index) {
-                this.currentSlide = index;
-                this.resetAutoplay();
-            },
-            startAutoplay() {
-                this.autoplayInterval = setInterval(() => {
-                    this.nextSlide();
-                }, 6000);
-            },
-            resetAutoplay() {
-                if (this.autoplayInterval) {
-                    clearInterval(this.autoplayInterval);
-                    this.startAutoplay();
-                }
-            },
             openLightbox(category) {
                 this.selectedCategory = category;
                 this.lightboxOpen = true;
-                document.body.style.overflow = 'hidden'; // Prevent body scroll
+                document.body.style.overflow = 'hidden';
             },
             closeLightbox() {
                 this.lightboxOpen = false;
-                document.body.style.overflow = ''; // Restore body scroll
+                document.body.style.overflow = '';
                 setTimeout(() => {
                     this.selectedCategory = null;
-                }, 300); // Wait for transition to complete
+                }, 300);
             }
         }
     }

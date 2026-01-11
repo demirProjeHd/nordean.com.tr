@@ -48,3 +48,31 @@ html {
 .fade-in {
   animation: fadeIn 1s ease-in-out;
 }
+
+/* Swiper custom styles */
+.swiper-slide {
+  height: auto;
+}
+
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: #d1d5db;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  width: 32px;
+  border-radius: 4px;
+  background: hsl(var(--primary));
+}
+
+.swiper-pagination-bullet:hover {
+  background: #9ca3af;
+}
+
+.swiper-button-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
