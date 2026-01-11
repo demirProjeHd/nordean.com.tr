@@ -87,4 +87,33 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+
+    // Solutions Slider
+    const solutionsSwiper = new Swiper('.solutions-swiper', {
+        modules: [Navigation, Pagination, Autoplay],
+        slidesPerView: 2,
+        spaceBetween: 12,
+        autoplay: {
+            delay: 5500,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.solutions-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.solutions-button-next',
+            prevEl: '.solutions-button-prev',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+            },
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 24,
+            }
+        }
+    });
 });
