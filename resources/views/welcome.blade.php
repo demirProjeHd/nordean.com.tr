@@ -298,7 +298,7 @@
                 </div>
 
                 <!-- Navigation -->
-                <div class="flex items-center justify-center gap-3 mt-8">
+                <div class="flex items-center justify-center gap-2 mt-8">
                     <!-- Previous Button -->
                     <button class="products-button-prev w-11 h-11 flex items-center justify-center rounded-full bg-white hover:bg-primary hover:text-white text-gray-900 transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
                             aria-label="Previous products">
