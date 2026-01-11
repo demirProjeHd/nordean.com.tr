@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // References Slider with Grid (2 rows)
     const referencesSwiper = new Swiper('.references-swiper', {
         modules: [Navigation, Pagination, Autoplay, Grid],
+        loop: true,
         slidesPerView: 2,
         spaceBetween: 12,
         grid: {
@@ -62,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Products Slider
     const productsSwiper = new Swiper('.products-swiper', {
         modules: [Navigation, Pagination, Autoplay],
+        loop: true,
         slidesPerView: 2,
         spaceBetween: 12,
         autoplay: {
@@ -91,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Solutions Slider
     const solutionsSwiper = new Swiper('.solutions-swiper', {
         modules: [Navigation, Pagination, Autoplay],
+        loop: true,
         slidesPerView: 2,
         spaceBetween: 12,
         autoplay: {
