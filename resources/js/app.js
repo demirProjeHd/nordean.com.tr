@@ -62,8 +62,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Products Slider
     const productsSwiper = new Swiper('.products-swiper', {
         modules: [Navigation, Pagination, Autoplay],
-        slidesPerView: 1,
-        spaceBetween: 16,
+        slidesPerView: 2,
+        spaceBetween: 12,
         autoplay: {
             delay: 6000,
             disableOnInteraction: false,
