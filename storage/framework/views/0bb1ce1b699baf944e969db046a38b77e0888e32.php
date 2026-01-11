@@ -3,7 +3,7 @@
         <div class="flex h-16 items-center justify-between">
             <!-- Logo -->
             <div class="flex items-center">
-                <a href="<?php echo e(route('home')); ?>" class="flex items-center gap-3">
+                <a href="<?php echo e('/' . app()->getLocale()); ?>" class="flex items-center gap-3">
                     <img src="<?php echo e(asset('images/nordean-logo.png')); ?>" alt="NORDEAN Logo" class="h-14 lg:h-16 w-auto">
                     <div class="hidden sm:block border-l border-gray-300 pl-3">
                         <div class="font-bold text-gray-900 leading-none tracking-wide" style="font-size: 17px;">NORDEAN</div>
@@ -14,38 +14,38 @@
 
             <!-- Desktop Navigation -->
             <div class="hidden md:flex md:items-center md:gap-4 lg:gap-6">
-                <a href="#home" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
+                <a href="<?php echo e('/' . app()->getLocale() . '#' . __('messages.slugs.home')); ?>" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     <?php echo e(__('messages.nav.home')); ?>
 
                 </a>
-                <a href="#about" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
+                <a href="<?php echo e('/' . app()->getLocale() . '#' . __('messages.slugs.about')); ?>" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     <?php echo e(__('messages.nav.about')); ?>
 
                 </a>
-                <a href="#solutions" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
+                <a href="<?php echo e('/' . app()->getLocale() . '#' . __('messages.slugs.solutions')); ?>" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     <?php echo e(__('messages.nav.solutions')); ?>
 
                 </a>
-                <a href="#products" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
+                <a href="<?php echo e('/' . app()->getLocale() . '#' . __('messages.slugs.products')); ?>" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     <?php echo e(__('messages.nav.products')); ?>
 
                 </a>
-                <a href="#references" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
+                <a href="<?php echo e('/' . app()->getLocale() . '#' . __('messages.slugs.references')); ?>" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     <?php echo e(__('messages.nav.references')); ?>
 
                 </a>
-                <a href="#contact" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
+                <a href="<?php echo e('/' . app()->getLocale() . '#' . __('messages.slugs.contact')); ?>" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     <?php echo e(__('messages.nav.contact')); ?>
 
                 </a>
 
                 <!-- Language Switcher -->
                 <div class="flex items-center gap-2 border-l pl-3 ml-3">
-                    <a href="<?php echo e(route('lang.switch', 'tr')); ?>"
+                    <a href="<?php echo e(route('home.tr')); ?>"
                        class="px-3 py-1 text-sm font-medium rounded <?php echo e(app()->getLocale() == 'tr' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100'); ?>">
                         TR
                     </a>
-                    <a href="<?php echo e(route('lang.switch', 'en')); ?>"
+                    <a href="<?php echo e(route('home.en')); ?>"
                        class="px-3 py-1 text-sm font-medium rounded <?php echo e(app()->getLocale() == 'en' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100'); ?>">
                         EN
                     </a>
@@ -56,11 +56,11 @@
             <div class="flex md:hidden items-center gap-3">
                 <!-- Language Switcher Mobile -->
                 <div class="flex items-center gap-2">
-                    <a href="<?php echo e(route('lang.switch', 'tr')); ?>"
+                    <a href="<?php echo e(route('home.tr')); ?>"
                        class="px-2 py-1 text-xs font-medium rounded <?php echo e(app()->getLocale() == 'tr' ? 'bg-primary text-white' : 'text-gray-700'); ?>">
                         TR
                     </a>
-                    <a href="<?php echo e(route('lang.switch', 'en')); ?>"
+                    <a href="<?php echo e(route('home.en')); ?>"
                        class="px-2 py-1 text-xs font-medium rounded <?php echo e(app()->getLocale() == 'en' ? 'bg-primary text-white' : 'text-gray-700'); ?>">
                         EN
                     </a>
@@ -87,32 +87,32 @@
              class="md:hidden py-4 border-t border-gray-200"
              style="display: none;">
             <div class="flex flex-col gap-4">
-                <a href="#home" @click="mobileMenuOpen = false"
+                <a href="<?php echo e('/' . app()->getLocale() . '#' . __('messages.slugs.home')); ?>" @click="mobileMenuOpen = false"
                    class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     <?php echo e(__('messages.nav.home')); ?>
 
                 </a>
-                <a href="#about" @click="mobileMenuOpen = false"
+                <a href="<?php echo e('/' . app()->getLocale() . '#' . __('messages.slugs.about')); ?>" @click="mobileMenuOpen = false"
                    class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     <?php echo e(__('messages.nav.about')); ?>
 
                 </a>
-                <a href="#solutions" @click="mobileMenuOpen = false"
+                <a href="<?php echo e('/' . app()->getLocale() . '#' . __('messages.slugs.solutions')); ?>" @click="mobileMenuOpen = false"
                    class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     <?php echo e(__('messages.nav.solutions')); ?>
 
                 </a>
-                <a href="#products" @click="mobileMenuOpen = false"
+                <a href="<?php echo e('/' . app()->getLocale() . '#' . __('messages.slugs.products')); ?>" @click="mobileMenuOpen = false"
                    class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     <?php echo e(__('messages.nav.products')); ?>
 
                 </a>
-                <a href="#references" @click="mobileMenuOpen = false"
+                <a href="<?php echo e('/' . app()->getLocale() . '#' . __('messages.slugs.references')); ?>" @click="mobileMenuOpen = false"
                    class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     <?php echo e(__('messages.nav.references')); ?>
 
                 </a>
-                <a href="#contact" @click="mobileMenuOpen = false"
+                <a href="<?php echo e('/' . app()->getLocale() . '#' . __('messages.slugs.contact')); ?>" @click="mobileMenuOpen = false"
                    class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     <?php echo e(__('messages.nav.contact')); ?>
 

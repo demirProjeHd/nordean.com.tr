@@ -1,25 +1,30 @@
 import './bootstrap';
 import Alpine from 'alpinejs';
 import Swiper from 'swiper';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay, Grid } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/grid';
 
 window.Alpine = Alpine;
 Alpine.start();
 
 // Make Swiper available globally
 window.Swiper = Swiper;
-window.SwiperModules = { Navigation, Pagination, Autoplay };
+window.SwiperModules = { Navigation, Pagination, Autoplay, Grid };
 
 // Initialize Swiper sliders
 document.addEventListener('DOMContentLoaded', function() {
-    // References Slider
+    // References Slider with Grid (2 rows)
     const referencesSwiper = new Swiper('.references-swiper', {
-        modules: [Navigation, Pagination, Autoplay],
+        modules: [Navigation, Pagination, Autoplay, Grid],
         slidesPerView: 1,
         spaceBetween: 16,
+        grid: {
+            rows: 2,
+            fill: 'row',
+        },
         autoplay: {
             delay: 5000,
             disableOnInteraction: false,
@@ -34,12 +39,20 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         breakpoints: {
             640: {
-                slidesPerView: 2,
+                slidesPerView: 4,
                 spaceBetween: 16,
+                grid: {
+                    rows: 2,
+                    fill: 'row',
+                },
             },
             1024: {
                 slidesPerView: 4,
                 spaceBetween: 16,
+                grid: {
+                    rows: 2,
+                    fill: 'row',
+                },
             }
         }
     });

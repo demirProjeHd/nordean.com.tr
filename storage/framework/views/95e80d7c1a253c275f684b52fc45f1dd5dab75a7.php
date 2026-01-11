@@ -1,6 +1,6 @@
 <footer class="bg-secondary text-white">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div class="grid md:grid-cols-4 gap-8 mb-8">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 md:pt-12 pb-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-6">
             <!-- Company Info -->
             <div class="md:col-span-2">
                 <div class="flex items-center gap-4 mb-4">
@@ -48,25 +48,25 @@
                 <h3 class="font-semibold mb-4"><?php echo e(__('messages.footer.solutions_title')); ?></h3>
                 <ul class="space-y-2 text-sm">
                     <li>
-                        <a href="#solutions" class="nav-link text-white/80 hover:text-primary transition-colors">
+                        <a href="<?php echo e('/' . app()->getLocale() . '#' . __('messages.slugs.solutions')); ?>" class="nav-link text-white/80 hover:text-primary transition-colors">
                             <?php echo e(__('messages.solutions.floor')); ?>
 
                         </a>
                     </li>
                     <li>
-                        <a href="#solutions" class="nav-link text-white/80 hover:text-primary transition-colors">
+                        <a href="<?php echo e('/' . app()->getLocale() . '#' . __('messages.slugs.solutions')); ?>" class="nav-link text-white/80 hover:text-primary transition-colors">
                             <?php echo e(__('messages.solutions.wall')); ?>
 
                         </a>
                     </li>
                     <li>
-                        <a href="#solutions" class="nav-link text-white/80 hover:text-primary transition-colors">
+                        <a href="<?php echo e('/' . app()->getLocale() . '#' . __('messages.slugs.solutions')); ?>" class="nav-link text-white/80 hover:text-primary transition-colors">
                             <?php echo e(__('messages.solutions.ceiling')); ?>
 
                         </a>
                     </li>
                     <li>
-                        <a href="#solutions" class="nav-link text-white/80 hover:text-primary transition-colors">
+                        <a href="<?php echo e('/' . app()->getLocale() . '#' . __('messages.slugs.solutions')); ?>" class="nav-link text-white/80 hover:text-primary transition-colors">
                             <?php echo e(__('messages.solutions.vibration')); ?>
 
                         </a>
@@ -79,14 +79,32 @@
                 <h3 class="font-semibold mb-4"><?php echo e(__('messages.footer.company_title')); ?></h3>
                 <ul class="space-y-2 text-sm">
                     <li>
-                        <a href="#about" class="nav-link text-white/80 hover:text-primary transition-colors">
+                        <a href="<?php echo e('/' . app()->getLocale() . '#' . __('messages.slugs.about')); ?>" class="nav-link text-white/80 hover:text-primary transition-colors">
                             <?php echo e(__('messages.nav.about')); ?>
 
                         </a>
                     </li>
                     <li>
-                        <a href="#products" class="nav-link text-white/80 hover:text-primary transition-colors">
+                        <a href="<?php echo e('/' . app()->getLocale() . '#' . __('messages.slugs.solutions')); ?>" class="nav-link text-white/80 hover:text-primary transition-colors">
+                            <?php echo e(__('messages.nav.solutions')); ?>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo e('/' . app()->getLocale() . '#' . __('messages.slugs.products')); ?>" class="nav-link text-white/80 hover:text-primary transition-colors">
                             <?php echo e(__('messages.nav.products')); ?>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo e('/' . app()->getLocale() . '#' . __('messages.slugs.references')); ?>" class="nav-link text-white/80 hover:text-primary transition-colors">
+                            <?php echo e(__('messages.nav.references')); ?>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo e('/' . app()->getLocale() . '#' . __('messages.slugs.contact')); ?>" class="nav-link text-white/80 hover:text-primary transition-colors">
+                            <?php echo e(__('messages.nav.contact')); ?>
 
                         </a>
                     </li>
@@ -99,13 +117,18 @@
             </div>
         </div>
 
-        <div class="border-t border-white/10 pt-8">
+        <div class="border-t border-white/10 pt-6">
             <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <a href="https://www.projehd.com" target="_blank" rel="noopener noreferrer"
+                   class="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors">
+                    <span>Design by</span>
+                    <img src="https://www.projehd.com/assets/img/logo-icon.png" alt="ProjeHD" class="h-8 w-auto">
+                    <span class="font-semibold">ProjeHD</span>
+                </a>
                 <p class="text-sm text-white/60">
                     &copy; <?php echo e(date('Y')); ?> NORDEAN Mühendislik. <?php echo e(__('messages.footer.rights')); ?>
 
                 </p>
-                <p class="text-sm text-white/60">www.nordean.com.tr</p>
             </div>
         </div>
     </div>

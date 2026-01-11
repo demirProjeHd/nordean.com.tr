@@ -6,7 +6,42 @@
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
     <title><?php echo e($title ?? 'NORDEAN - Isolgomma Türkiye Distribütörü | Ses ve Titreşim Yalıtımı'); ?></title>
-    <meta name="description" content="İtalyan Isolgomma ses ve titreşim yalıtım malzemelerinin Türkiye'deki tek yetkili ithalatçısı ve distribütörü.">
+    <meta name="description" content="<?php echo e($description ?? 'İtalyan Isolgomma ses ve titreşim yalıtım malzemelerinin Türkiye\'deki tek yetkili ithalatçısı ve distribütörü. Zemin, duvar, tavan yalıtımı ve titreşim kontrolü çözümleri.'); ?>">
+    <meta name="keywords" content="ses yalıtımı, titreşim yalıtımı, akustik malzeme, isolgomma, nordean, zemin yalıtımı, duvar yalıtımı, tavan yalıtımı, yapı malzemeleri, sound insulation, vibration control">
+    <meta name="author" content="NORDEAN Mühendislik">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="<?php echo e(url()->current()); ?>">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?php echo e(url()->current()); ?>">
+    <meta property="og:title" content="<?php echo e($title ?? 'NORDEAN - Isolgomma Türkiye Distribütörü | Ses ve Titreşim Yalıtımı'); ?>">
+    <meta property="og:description" content="<?php echo e($description ?? 'İtalyan Isolgomma ses ve titreşim yalıtım malzemelerinin Türkiye\'deki tek yetkili ithalatçısı ve distribütörü.'); ?>">
+    <meta property="og:image" content="<?php echo e(asset('images/nordean-logo.png')); ?>">
+    <meta property="og:locale" content="<?php echo e(app()->getLocale() == 'tr' ? 'tr_TR' : 'en_US'); ?>">
+    <meta property="og:site_name" content="NORDEAN Mühendislik">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="<?php echo e(url()->current()); ?>">
+    <meta name="twitter:title" content="<?php echo e($title ?? 'NORDEAN - Isolgomma Türkiye Distribütörü | Ses ve Titreşim Yalıtımı'); ?>">
+    <meta name="twitter:description" content="<?php echo e($description ?? 'İtalyan Isolgomma ses ve titreşim yalıtım malzemelerinin Türkiye\'deki tek yetkili ithalatçısı ve distribütörü.'); ?>">
+    <meta name="twitter:image" content="<?php echo e(asset('images/nordean-logo.png')); ?>">
+
+    <!-- Alternate Language Links (hreflang) -->
+    <link rel="alternate" hreflang="tr" href="<?php echo e(url('/tr' . (request()->getPathInfo() === '/' ? '' : request()->getPathInfo()))); ?>" />
+    <link rel="alternate" hreflang="en" href="<?php echo e(url('/en' . (request()->getPathInfo() === '/' ? '' : request()->getPathInfo()))); ?>" />
+    <link rel="alternate" hreflang="x-default" href="<?php echo e(url('/')); ?>" />
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-XXXXXXX');
+    </script>
+    <!-- End Google Tag Manager -->
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -92,25 +127,59 @@
     <!-- Smooth Scroll Navigation -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll function
+            function smoothScrollTo(targetElement) {
+                if (!targetElement) return;
+
+                const headerOffset = 80; // Height of fixed header + some padding
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+
             // Handle smooth scroll for all navigation links
-            document.querySelectorAll('a.nav-link[href^="#"]').forEach(anchor => {
+            document.querySelectorAll('a[href*="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
+                    const href = this.getAttribute('href');
+
+                    if (!href || href === '#') return;
+
+                    // Extract the hash/anchor part
+                    const hashIndex = href.indexOf('#');
+                    if (hashIndex === -1) return;
+
+                    const hash = href.substring(hashIndex + 1);
+                    if (!hash) return;
+
+                    // Find target element
+                    const targetElement = document.getElementById(hash);
 
                     if (targetElement) {
-                        const headerOffset = 64; // Height of fixed header
-                        const elementPosition = targetElement.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        e.preventDefault();
+                        smoothScrollTo(targetElement);
 
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
+                        // Update URL without jumping
+                        if (history.pushState) {
+                            history.pushState(null, null, '#' + hash);
+                        }
                     }
                 });
             });
+
+            // Handle URL hash on page load
+            if (window.location.hash) {
+                setTimeout(() => {
+                    const hash = window.location.hash.substring(1);
+                    const targetElement = document.getElementById(hash);
+                    if (targetElement) {
+                        smoothScrollTo(targetElement);
+                    }
+                }, 100);
+            }
         });
     </script>
 </body>
