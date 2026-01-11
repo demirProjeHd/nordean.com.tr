@@ -56,24 +56,29 @@ html {
 
 /* References Swiper - Grid Layout with fixed heights */
 .references-swiper .swiper-slide {
-  height: 160px;
+  height: 160px !important;
 }
 
 .references-swiper .swiper-slide > div {
   width: 100%;
-  height: 100%;
+  height: 100% !important;
+  display: block;
+}
+
+.references-swiper .swiper-slide > div > div {
+  height: 100% !important;
 }
 
 /* Responsive heights for references grid */
 @media (min-width: 640px) {
   .references-swiper .swiper-slide {
-    height: 140px;
+    height: 140px !important;
   }
 }
 
 @media (min-width: 1024px) {
   .references-swiper .swiper-slide {
-    height: 150px;
+    height: 150px !important;
   }
 }
 
