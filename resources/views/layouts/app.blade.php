@@ -6,7 +6,27 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ $title ?? 'NORDEAN - Isolgomma Türkiye Distribütörü | Ses ve Titreşim Yalıtımı' }}</title>
-    <meta name="description" content="İtalyan Isolgomma ses ve titreşim yalıtım malzemelerinin Türkiye'deki tek yetkili ithalatçısı ve distribütörü.">
+    <meta name="description" content="{{ $description ?? 'İtalyan Isolgomma ses ve titreşim yalıtım malzemelerinin Türkiye\'deki tek yetkili ithalatçısı ve distribütörü. Zemin, duvar, tavan yalıtımı ve titreşim kontrolü çözümleri.' }}">
+    <meta name="keywords" content="ses yalıtımı, titreşim yalıtımı, akustik malzeme, isolgomma, nordean, zemin yalıtımı, duvar yalıtımı, tavan yalıtımı, yapı malzemeleri, sound insulation, vibration control">
+    <meta name="author" content="NORDEAN Mühendislik">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="{{ $title ?? 'NORDEAN - Isolgomma Türkiye Distribütörü | Ses ve Titreşim Yalıtımı' }}">
+    <meta property="og:description" content="{{ $description ?? 'İtalyan Isolgomma ses ve titreşim yalıtım malzemelerinin Türkiye\'deki tek yetkili ithalatçısı ve distribütörü.' }}">
+    <meta property="og:image" content="{{ asset('images/nordean-logo.png') }}">
+    <meta property="og:locale" content="{{ app()->getLocale() == 'tr' ? 'tr_TR' : 'en_US' }}">
+    <meta property="og:site_name" content="NORDEAN Mühendislik">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ url()->current() }}">
+    <meta name="twitter:title" content="{{ $title ?? 'NORDEAN - Isolgomma Türkiye Distribütörü | Ses ve Titreşim Yalıtımı' }}">
+    <meta name="twitter:description" content="{{ $description ?? 'İtalyan Isolgomma ses ve titreşim yalıtım malzemelerinin Türkiye\'deki tek yetkili ithalatçısı ve distribütörü.' }}">
+    <meta name="twitter:image" content="{{ asset('images/nordean-logo.png') }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
