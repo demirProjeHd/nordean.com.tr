@@ -28,6 +28,11 @@
     <meta name="twitter:description" content="{{ $description ?? 'İtalyan Isolgomma ses ve titreşim yalıtım malzemelerinin Türkiye\'deki tek yetkili ithalatçısı ve distribütörü.' }}">
     <meta name="twitter:image" content="{{ asset('images/nordean-logo.png') }}">
 
+    <!-- Alternate Language Links (hreflang) -->
+    <link rel="alternate" hreflang="tr" href="{{ url('/tr' . (request()->getPathInfo() === '/' ? '' : request()->getPathInfo())) }}" />
+    <link rel="alternate" hreflang="en" href="{{ url('/en' . (request()->getPathInfo() === '/' ? '' : request()->getPathInfo())) }}" />
+    <link rel="alternate" hreflang="x-default" href="{{ url('/') }}" />
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

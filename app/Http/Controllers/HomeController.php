@@ -17,6 +17,26 @@ class HomeController extends Controller
     }
 
     /**
+     * Display the Turkish home page
+     */
+    public function indexTr()
+    {
+        Session::put('locale', 'tr');
+        App::setLocale('tr');
+        return view('welcome');
+    }
+
+    /**
+     * Display the English home page
+     */
+    public function indexEn()
+    {
+        Session::put('locale', 'en');
+        App::setLocale('en');
+        return view('welcome');
+    }
+
+    /**
      * Change language
      */
     public function changeLanguage($locale)

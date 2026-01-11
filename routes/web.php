@@ -17,6 +17,10 @@ use App\Http\Controllers\SitemapController;
 // Main Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// Language-specific Routes (for SEO)
+Route::get('/tr', [HomeController::class, 'indexTr'])->name('home.tr');
+Route::get('/en', [HomeController::class, 'indexEn'])->name('home.en');
+
 // Language Switcher
 Route::get('/lang/{locale}', [HomeController::class, 'changeLanguage'])->name('lang.switch');
 
