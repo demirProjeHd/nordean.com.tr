@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // References Slider with Grid (2 rows)
     const referencesSwiper = new Swiper('.references-swiper', {
         modules: [Navigation, Pagination, Autoplay, Grid],
-        slidesPerView: 1,
-        spaceBetween: 16,
+        slidesPerView: 2,
+        spaceBetween: 12,
         grid: {
             rows: 2,
             fill: 'row',
