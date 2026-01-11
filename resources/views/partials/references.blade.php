@@ -66,9 +66,9 @@
             </div>
 
             <!-- Navigation -->
-            <div class="flex items-center justify-center gap-4 mt-8">
+            <div class="flex items-center justify-center gap-3 mt-8">
                 <!-- Previous Button -->
-                <button class="references-button-prev p-3 rounded-full bg-white hover:bg-primary hover:text-white text-gray-900 transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                <button class="references-button-prev w-11 h-11 flex items-center justify-center rounded-full bg-white hover:bg-primary hover:text-white text-gray-900 transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
                         aria-label="Previous references">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
@@ -76,10 +76,10 @@
                 </button>
 
                 <!-- Pagination Dots -->
-                <div class="references-pagination flex gap-2"></div>
+                <div class="references-pagination flex gap-2 min-w-[80px] justify-center"></div>
 
                 <!-- Next Button -->
-                <button class="references-button-next p-3 rounded-full bg-primary hover:bg-primary/90 text-white transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                <button class="references-button-next w-11 h-11 flex items-center justify-center rounded-full bg-primary hover:bg-primary/90 text-white transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
                         aria-label="Next references">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
