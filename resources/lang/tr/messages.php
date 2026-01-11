@@ -7,6 +7,7 @@ return [
         'about' => 'Hakkımızda',
         'products' => 'Ürünler',
         'solutions' => 'Çözümler',
+        'references' => 'Referanslarımız',
         'contact' => 'İletişim',
     ],
 
@@ -130,6 +131,11 @@ return [
             'sample' => 'Numune Talebi',
             'other' => 'Genel Talep',
         ],
+    ],
+
+    'references' => [
+        'title' => 'Referanslarımız',
+        'subtitle' => 'Güvenilir çözüm ortağınız olarak birçok prestijli projeye imza attık',
     ],
 
     'footer' => [

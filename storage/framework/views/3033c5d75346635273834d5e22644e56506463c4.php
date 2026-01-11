@@ -19,8 +19,8 @@
     <link rel="icon" type="image/svg+xml" href="<?php echo e(asset('images/icon.svg')); ?>">
 
     <!-- Styles -->
-    <?php if(config('app.env') === 'local' && !file_exists(public_path('build/manifest.json'))): ?>
-        <!-- Development CDN fallback -->
+    <?php if(!file_exists(public_path('build/manifest.json'))): ?>
+        <!-- CDN fallback (for development and production without build) -->
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
             tailwind.config = {

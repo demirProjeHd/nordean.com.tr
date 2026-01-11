@@ -249,6 +249,9 @@
         </div>
     </section>
 
+    <!-- References Section -->
+    @include('partials.references')
+
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-gray-50">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

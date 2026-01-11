@@ -7,6 +7,7 @@ return [
         'about' => 'About',
         'products' => 'Products',
         'solutions' => 'Solutions',
+        'references' => 'Our References',
         'contact' => 'Contact',
     ],
 
@@ -130,6 +131,11 @@ return [
             'sample' => 'Sample Request',
             'other' => 'General Inquiry',
         ],
+    ],
+
+    'references' => [
+        'title' => 'Our References',
+        'subtitle' => 'As your trusted solution partner, we have completed many prestigious projects',
     ],
 
     'footer' => [

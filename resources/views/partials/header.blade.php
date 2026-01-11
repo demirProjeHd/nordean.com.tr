@@ -4,7 +4,7 @@
             <!-- Logo -->
             <div class="flex items-center">
                 <a href="{{ route('home') }}" class="flex items-center gap-3">
-                    <img src="{{ asset('images/nordean-logo.png') }}" alt="NORDEAN Logo" class="h-14 w-auto">
+                    <img src="{{ asset('images/nordean-logo.png') }}" alt="NORDEAN Logo" class="h-14 lg:h-16 w-auto">
                     <div class="hidden sm:block border-l border-gray-300 pl-3">
                         <div class="font-bold text-gray-900 leading-none tracking-wide" style="font-size: 17px;">NORDEAN</div>
                         <div class="font-semibold text-primary leading-none tracking-wider" style="font-size: 11px;">{{ __('messages.footer.subtitle') }}</div>
@@ -13,7 +13,7 @@
             </div>
 
             <!-- Desktop Navigation -->
-            <div class="hidden md:flex md:items-center md:gap-4">
+            <div class="hidden md:flex md:items-center md:gap-4 lg:gap-6">
                 <a href="#home" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     {{ __('messages.nav.home') }}
                 </a>
@@ -25,6 +25,9 @@
                 </a>
                 <a href="#products" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     {{ __('messages.nav.products') }}
+                </a>
+                <a href="#references" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
+                    {{ __('messages.nav.references') }}
                 </a>
                 <a href="#contact" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     {{ __('messages.nav.contact') }}
@@ -93,6 +96,10 @@
                 <a href="#products" @click="mobileMenuOpen = false"
                    class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     {{ __('messages.nav.products') }}
+                </a>
+                <a href="#references" @click="mobileMenuOpen = false"
+                   class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
+                    {{ __('messages.nav.references') }}
                 </a>
                 <a href="#contact" @click="mobileMenuOpen = false"
                    class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">

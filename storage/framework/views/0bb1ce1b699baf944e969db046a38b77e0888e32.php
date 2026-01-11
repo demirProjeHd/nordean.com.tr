@@ -1,19 +1,19 @@
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200" x-data="{ mobileMenuOpen: false }">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white backdrop-blur-md border-b border-gray-200" x-data="{ mobileMenuOpen: false }">
     <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
             <!-- Logo -->
             <div class="flex items-center">
                 <a href="<?php echo e(route('home')); ?>" class="flex items-center gap-3">
-                    <img src="<?php echo e(asset('images/nordean-logo.png')); ?>" alt="NORDEAN Logo" class="h-10 w-auto">
+                    <img src="<?php echo e(asset('images/nordean-logo.png')); ?>" alt="NORDEAN Logo" class="h-14 lg:h-16 w-auto">
                     <div class="hidden sm:block border-l border-gray-300 pl-3">
-                        <div class="text-lg font-bold text-gray-900 leading-none tracking-wide">NORDEAN</div>
-                        <div class="text-xs font-semibold text-primary leading-none tracking-wider"><?php echo e(__('messages.footer.subtitle')); ?></div>
+                        <div class="font-bold text-gray-900 leading-none tracking-wide" style="font-size: 17px;">NORDEAN</div>
+                        <div class="font-semibold text-primary leading-none tracking-wider" style="font-size: 11px;"><?php echo e(__('messages.footer.subtitle')); ?></div>
                     </div>
                 </a>
             </div>
 
             <!-- Desktop Navigation -->
-            <div class="hidden md:flex md:items-center md:gap-8">
+            <div class="hidden md:flex md:items-center md:gap-4 lg:gap-6">
                 <a href="#home" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     <?php echo e(__('messages.nav.home')); ?>
 
@@ -30,13 +30,17 @@
                     <?php echo e(__('messages.nav.products')); ?>
 
                 </a>
+                <a href="#references" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
+                    <?php echo e(__('messages.nav.references')); ?>
+
+                </a>
                 <a href="#contact" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     <?php echo e(__('messages.nav.contact')); ?>
 
                 </a>
 
                 <!-- Language Switcher -->
-                <div class="flex items-center gap-2 border-l pl-4 ml-4">
+                <div class="flex items-center gap-2 border-l pl-3 ml-3">
                     <a href="<?php echo e(route('lang.switch', 'tr')); ?>"
                        class="px-3 py-1 text-sm font-medium rounded <?php echo e(app()->getLocale() == 'tr' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100'); ?>">
                         TR
@@ -101,6 +105,11 @@
                 <a href="#products" @click="mobileMenuOpen = false"
                    class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     <?php echo e(__('messages.nav.products')); ?>
+
+                </a>
+                <a href="#references" @click="mobileMenuOpen = false"
+                   class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
+                    <?php echo e(__('messages.nav.references')); ?>
 
                 </a>
                 <a href="#contact" @click="mobileMenuOpen = false"
