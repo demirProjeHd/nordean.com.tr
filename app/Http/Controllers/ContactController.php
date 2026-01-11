@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
+use App\Models\ContactMessage;
+use App\Mail\ContactFormMail;
 
 class ContactController extends Controller
 {
@@ -37,16 +39,28 @@ class ContactController extends Controller
         $subjectTranslation = __($subjectKey);
 
         try {
+            // Save to database
+            $contactMessage = ContactMessage::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'phone' => $data['phone'] ?? null,
+                'subject' => $data['subject'],
+                'message' => $data['message'],
+                'ip_address' => $request->ip(),
+                'user_agent' => $request->userAgent(),
+            ]);
+
+            // Send email to admin
+            Mail::to(config('mail.from.address'))
+                ->send(new ContactFormMail($data, $subjectTranslation));
+
             // Log the contact form submission
             Log::info('Contact form submission', [
+                'id' => $contactMessage->id,
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'subject' => $subjectTranslation
             ]);
-
-            // Here you would typically send an email
-            // For now, we'll just return success
-            // Mail::send(...);
 
             return response()->json([
                 'success' => true,
