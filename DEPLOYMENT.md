@@ -98,7 +98,7 @@ php artisan view:cache
 php artisan optimize
 ```
 
-### 8. Apache Virtual Host Yapılandırması
+### 8a. Apache Virtual Host Yapılandırması
 
 ```apache
 <VirtualHost *:80>
@@ -122,6 +122,38 @@ php artisan optimize
 sudo a2ensite nordean.conf
 sudo a2enmod rewrite
 sudo systemctl restart apache2
+```
+
+### 8b. Nginx Server Block Yapılandırması
+
+```bash
+# nginx.conf dosyasını kopyala
+sudo cp nginx.conf /etc/nginx/sites-available/nordean.com.tr
+
+# Symlink oluştur
+sudo ln -s /etc/nginx/sites-available/nordean.com.tr /etc/nginx/sites-enabled/
+
+# Nginx yapılandırmasını test et
+sudo nginx -t
+
+# Nginx'i yeniden başlat
+sudo systemctl restart nginx
+
+# PHP-FPM'i başlat (eğer çalışmıyorsa)
+sudo systemctl start php8.1-fpm
+sudo systemctl enable php8.1-fpm
+```
+
+**Nginx için izinleri ayarla:**
+
+```bash
+# Nginx kullanıcısı için
+sudo chown -R www-data:www-data /var/www/html/nordean.com.tr
+sudo chown -R www-data:www-data storage bootstrap/cache
+sudo chmod -R 775 storage bootstrap/cache
+
+# Eğer nginx kullanıcısı farklıysa (bazı sistemlerde)
+# sudo chown -R nginx:nginx /var/www/html/nordean.com.tr
 ```
 
 ### 9. SSL Sertifikası Kurulumu (Let's Encrypt)
