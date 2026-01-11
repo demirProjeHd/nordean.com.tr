@@ -240,7 +240,7 @@
                         @foreach($chunks as $chunkIndex => $categoryChunk)
                         <div class="min-w-full flex-shrink-0">
                             <!-- Products Grid -->
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1216px] mx-auto">
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1216px] mx-auto px-4">
                                 @foreach($categoryChunk as $index => $category)
                                 <div @click="openLightbox({{ json_encode($category) }})"
                                      class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 cursor-pointer">

@@ -28,10 +28,10 @@
                     @foreach($chunks as $chunkIndex => $projectChunk)
                     <div class="min-w-full flex-shrink-0">
                         <!-- References Grid -->
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-[1216px] mx-auto">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-[1216px] mx-auto px-4">
                             @foreach($projectChunk as $index => $project)
                             <div @click="openLightbox({{ json_encode($project) }})"
-                                 class="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 w-full md:w-[290px] md:justify-self-center cursor-pointer">
+                                 class="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 w-full cursor-pointer">
                                 <div class="relative w-full h-[120px] overflow-hidden bg-gray-100">
                                     <img src="{{ asset('images/references/' . $project['image']) }}"
                                          alt="{{ $project['name'] }}"
