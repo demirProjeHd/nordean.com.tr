@@ -1,10 +1,10 @@
 <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200" x-data="{ mobileMenuOpen: false }">
     <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex h-16 items-center justify-between">
+        <div class="flex h-20 items-center justify-between">
             <!-- Logo -->
             <div class="flex items-center">
                 <a href="{{ route('home') }}" class="flex items-center gap-3">
-                    <img src="{{ asset('images/nordean-logo.png') }}" alt="NORDEAN Logo" class="h-10 w-auto">
+                    <img src="{{ asset('images/nordean-logo.png') }}" alt="NORDEAN Logo" class="h-16 w-auto">
                     <div class="hidden sm:block border-l border-gray-300 pl-3">
                         <div class="text-lg font-bold text-gray-900 leading-none tracking-wide">NORDEAN</div>
                         <div class="text-xs font-semibold text-primary leading-none tracking-wider">{{ __('messages.footer.subtitle') }}</div>

@@ -80,7 +80,7 @@
     @include('partials.header')
 
     <!-- Main Content -->
-    <main class="pt-16">
+    <main class="pt-20">
         @yield('content')
     </main>
 
@@ -100,7 +100,7 @@
                     const targetElement = document.querySelector(targetId);
 
                     if (targetElement) {
-                        const headerOffset = 64; // Height of fixed header
+                        const headerOffset = 80; // Height of fixed header
                         const elementPosition = targetElement.getBoundingClientRect().top;
                         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
