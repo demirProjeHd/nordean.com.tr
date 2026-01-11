@@ -1,277 +1,160 @@
-# NORDEAN Website Deployment Guide
+# NORDEAN Website - Deployment Talimatları
 
-## Sunucu Gereksinimleri
-- PHP 8.1.28 veya üzeri
-- MySQL 5.7+ veya MariaDB 10.3+
-- Composer
-- Git
-- Apache/Nginx web server
+## 🚀 Tamamlanan Adımlar
 
-## Deployment Adımları
+### ✅ Kod Geliştirme
+- [x] Contact form database entegrasyonu
+- [x] Email gönderim sistemi (ContactFormMail)
+- [x] SEO optimizasyonları (meta tags, Open Graph, Twitter Cards)
+- [x] Dinamik sitemap.xml
+- [x] robots.txt
+- [x] Production .env yapılandırması
 
-### 1. Repository'yi Sunucuya Clone Et
+### ✅ Dosya Yapısı
+- [x] Vendor dependencies (kopyalandı)
+- [x] Storage/cache folder permissions (755)
+- [x] Migration dosyaları oluşturuldu
 
-```bash
-cd /var/www/html
-git clone https://github.com/demirProjeHd/nordean.com.tr.git
-cd nordean.com.tr
+## 📋 Manuel Adımlar (Yapılması Gerekenler)
+
+### 1. **XAMPP MySQL Servisini Başlatın**
+```
+XAMPP Control Panel'den MySQL'i başlatın
 ```
 
-### 2. Composer Dependencies Kur
-
+### 2. **Database Migration'larını Çalıştırın**
 ```bash
-composer install --optimize-autoloader --no-dev
+cd C:\xampp\htdocs\nordean.com.tr
+C:\xampp\php\php.exe artisan migrate --force
 ```
 
-### 3. Environment Dosyasını Yapılandır
+Bu komut aşağıdaki tabloları oluşturacak:
+- users
+- password_resets
+- failed_jobs
+- personal_access_tokens
+- **contact_messages** (iletişim formu mesajları)
 
-```bash
-# .env.production dosyasını .env olarak kopyala
-cp .env.production .env
+### 3. **Mail Konfigürasyonu**
 
-# Aşağıdaki ayarları düzenle:
-nano .env
-```
-
-**Düzenlenmesi Gereken Ayarlar:**
+`.env` dosyasında mail ayarlarını güncelleyin:
 
 ```env
-# Veritabanı Ayarları
-DB_DATABASE=nordean_db
-DB_USERNAME=nordean_user
-DB_PASSWORD=GERCEK_VERITABANI_SIFRESI
-
-# Mail Ayarları (SMTP)
-MAIL_HOST=smtp.nordean.com.tr
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
 MAIL_PORT=587
 MAIL_USERNAME=info@nordean.com.tr
-MAIL_PASSWORD=GERCEK_MAIL_SIFRESI
+MAIL_PASSWORD=your_app_password_here  # ← BURAYA ŞİFRE EKLEYİN
 MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="info@nordean.com.tr"
 ```
 
-### 4. Application Key Generate Et
+**Gmail için App Password oluşturma:**
+1. Gmail Settings → Security
+2. 2-Step Verification açın
+3. App Passwords bölümünden yeni şifre oluşturun
+4. Oluşan şifreyi MAIL_PASSWORD'e ekleyin
+
+### 4. **Production Cache Optimizasyonları**
 
 ```bash
-php artisan key:generate
-```
+cd C:\xampp\htdocs\nordean.com.tr
 
-### 5. Storage ve Cache Klasör İzinlerini Ayarla
-
-```bash
-# Apache kullanıcısı için
-sudo chown -R www-data:www-data storage bootstrap/cache
-sudo chmod -R 775 storage bootstrap/cache
-
-# Nginx kullanıcısı için (alternatif)
-# sudo chown -R nginx:nginx storage bootstrap/cache
-# sudo chmod -R 775 storage bootstrap/cache
-```
-
-### 6. Veritabanı Migration'larını Çalıştır
-
-```bash
-# Önce veritabanını oluştur
-mysql -u root -p
-CREATE DATABASE nordean_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-CREATE USER 'nordean_user'@'localhost' IDENTIFIED BY 'GERCEK_SIFRE';
-GRANT ALL PRIVILEGES ON nordean_db.* TO 'nordean_user'@'localhost';
-FLUSH PRIVILEGES;
-EXIT;
-
-# Migration'ları çalıştır
-php artisan migrate --force
-```
-
-### 7. Production Optimizasyonları
-
-```bash
 # Config cache
-php artisan config:cache
+C:\xampp\php\php.exe artisan config:cache
 
 # Route cache
-php artisan route:cache
+C:\xampp\php\php.exe artisan route:cache
 
 # View cache
-php artisan view:cache
-
-# Optimize
-php artisan optimize
+C:\xampp\php\php.exe artisan view:cache
 ```
 
-### 8a. Apache Virtual Host Yapılandırması
+### 5. **Test Edilmesi Gerekenler**
 
-```apache
-<VirtualHost *:80>
-    ServerName nordean.com.tr
-    ServerAlias www.nordean.com.tr
-    DocumentRoot /var/www/html/nordean.com.tr/public
+#### ✅ Navigation Testi
+- [ ] Tüm menu linkleri çalışıyor mu? (About, Solutions, Products, References, Contact)
+- [ ] Smooth scroll düzgün çalışıyor mu?
+- [ ] Dil değiştirme (TR/EN) çalışıyor mu?
 
-    <Directory /var/www/html/nordean.com.tr/public>
-        AllowOverride All
-        Require all granted
-        Options -Indexes +FollowSymLinks
-    </Directory>
+#### ✅ Contact Form Testi
+- [ ] Form gönderimi çalışıyor mu?
+- [ ] Email gönderiliyor mu?
+- [ ] Database'e kayıt düşüyor mu?
+- [ ] Validation çalışıyor mu?
 
-    ErrorLog ${APACHE_LOG_DIR}/nordean_error.log
-    CustomLog ${APACHE_LOG_DIR}/nordean_access.log combined
-</VirtualHost>
-```
+#### ✅ Responsive Test
+- [ ] Mobile (375px - iPhone)
+- [ ] Tablet (768px - iPad Air)
+- [ ] Desktop (1920px)
+
+#### ✅ SEO Testi
+- [ ] `/sitemap.xml` açılıyor mu?
+- [ ] `/robots.txt` açılıyor mu?
+- [ ] Meta tags görünüyor mu? (Kaynak kodda kontrol)
+- [ ] Open Graph tags doğru mu?
+
+#### ✅ Performance
+- [ ] Sayfa yüklenme hızı
+- [ ] Görseller optimize mi?
+- [ ] Cache çalışıyor mu?
+
+### 6. **Server Upload (Canlı Ortam)**
+
+Eğer canlı sunucuya upload edecekseniz:
 
 ```bash
-# Virtual host'u aktifleştir
-sudo a2ensite nordean.conf
-sudo a2enmod rewrite
-sudo systemctl restart apache2
-```
-
-### 8b. Nginx Server Block Yapılandırması
-
-```bash
-# nginx.conf dosyasını kopyala
-sudo cp nginx.conf /etc/nginx/sites-available/nordean.com.tr
-
-# Symlink oluştur
-sudo ln -s /etc/nginx/sites-available/nordean.com.tr /etc/nginx/sites-enabled/
-
-# Nginx yapılandırmasını test et
-sudo nginx -t
-
-# Nginx'i yeniden başlat
-sudo systemctl restart nginx
-
-# PHP-FPM'i başlat (eğer çalışmıyorsa)
-sudo systemctl start php8.1-fpm
-sudo systemctl enable php8.1-fpm
-```
-
-**Nginx için izinleri ayarla:**
-
-```bash
-# Nginx kullanıcısı için
-sudo chown -R www-data:www-data /var/www/html/nordean.com.tr
-sudo chown -R www-data:www-data storage bootstrap/cache
-sudo chmod -R 775 storage bootstrap/cache
-
-# Eğer nginx kullanıcısı farklıysa (bazı sistemlerde)
-# sudo chown -R nginx:nginx /var/www/html/nordean.com.tr
-```
-
-### 9. SSL Sertifikası Kurulumu (Let's Encrypt)
-
-```bash
-# Certbot kur
-sudo apt install certbot python3-certbot-apache
-
-# SSL sertifikası al
-sudo certbot --apache -d nordean.com.tr -d www.nordean.com.tr
-
-# Auto-renewal test et
-sudo certbot renew --dry-run
-```
-
-### 10. Güvenlik Ayarları
-
-**.htaccess** dosyasına ekle (public klasörü):
-
-```apache
-# Disable directory listing
-Options -Indexes
-
-# Protect .env file
-<Files .env>
-    Order allow,deny
-    Deny from all
-</Files>
-
-# Force HTTPS
-RewriteEngine On
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-```
-
-## Güncelleme Adımları
-
-```bash
+# Sunucuda
 cd /var/www/html/nordean.com.tr
 
-# Git pull
+# GitHub'dan güncellemeleri çek
 git pull origin master
 
-# Composer update
-composer install --optimize-autoloader --no-dev
+# Vendor dependencies kur (eğer yoksa)
+composer install --no-dev --optimize-autoloader
 
-# Cache temizle ve yeniden oluştur
-php artisan cache:clear
-php artisan config:clear
-php artisan route:clear
-php artisan view:clear
+# Permissions
+chmod -R 775 storage bootstrap/cache
 
-# Yeniden cache oluştur
+# Migration
+php artisan migrate --force
+
+# Cache
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
-php artisan optimize
-
-# Migration'ları çalıştır (gerekirse)
-php artisan migrate --force
 ```
 
-## İletişim Formu Test
+## 🔧 Troubleshooting
 
-Test için:
+### Mail Gönderilmiyor
+- MAIL_PASSWORD doğru girilmiş mi?
+- Gmail 2FA ve App Password kullanılıyor mu?
+- `storage/logs/laravel.log` dosyasını kontrol edin
 
+### Database Bağlantı Hatası
+- MySQL servisi çalışıyor mu?
+- .env dosyasında DB_PASSWORD boş mu? (XAMPP default)
+- Database oluşturulmuş mu? (`CREATE DATABASE nordean;`)
+
+### 404 Hatası
+- Route cache temizleyin: `php artisan route:clear`
+- `.htaccess` dosyası var mı?
+
+### Permission Hatası
 ```bash
-# Mail ayarlarını test et
-php artisan tinker
-
-# Tinker içinde:
-Mail::raw('Test email', function($message) {
-    $message->to('info@nordean.com.tr')->subject('Test');
-});
+chmod -R 775 storage
+chmod -R 775 bootstrap/cache
 ```
 
-## Troubleshooting
+## 📞 Destek
 
-### Storage İzin Hatası
-```bash
-sudo chmod -R 775 storage bootstrap/cache
-sudo chown -R www-data:www-data storage bootstrap/cache
-```
+Herhangi bir sorun için:
+- Laravel logs: `storage/logs/laravel.log`
+- Apache logs: XAMPP logs klasörü
+- Browser console: F12 Developer Tools
 
-### 500 Internal Server Error
-```bash
-# Log dosyalarını kontrol et
-tail -f storage/logs/laravel.log
-tail -f /var/log/apache2/nordean_error.log
-```
+---
 
-### Cache Problemleri
-```bash
-php artisan cache:clear
-php artisan config:clear
-php artisan route:clear
-php artisan view:clear
-composer dump-autoload
-```
-
-## Önemli Notlar
-
-1. **Asla .env dosyasını git'e commit etmeyin**
-2. **Production'da APP_DEBUG=false olmalı**
-3. **Düzenli yedekleme yapın (database + dosyalar)**
-4. **SSL sertifikası sürekli aktif olmalı**
-5. **Log dosyalarını düzenli kontrol edin**
-
-## Yedekleme
-
-```bash
-# Database backup
-mysqldump -u nordean_user -p nordean_db > backup_$(date +%Y%m%d).sql
-
-# Dosya backup
-tar -czf nordean_files_$(date +%Y%m%d).tar.gz /var/www/html/nordean.com.tr
-```
-
-## İletişim
-
-Sorularınız için: info@nordean.com.tr
+✨ **Hazırlayan:** Claude Code
+📅 **Tarih:** 2026-01-11
