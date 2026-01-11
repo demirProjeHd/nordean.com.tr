@@ -47,22 +47,22 @@
                 <h3 class="font-semibold mb-4">{{ __('messages.footer.solutions_title') }}</h3>
                 <ul class="space-y-2 text-sm">
                     <li>
-                        <a href="{{ '/' . app()->getLocale() . '#solutions' }}" class="nav-link text-white/80 hover:text-primary transition-colors">
+                        <a href="{{ '/' . app()->getLocale() . '#' . __('messages.slugs.solutions') }}" class="nav-link text-white/80 hover:text-primary transition-colors">
                             {{ __('messages.solutions.floor') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ '/' . app()->getLocale() . '#solutions' }}" class="nav-link text-white/80 hover:text-primary transition-colors">
+                        <a href="{{ '/' . app()->getLocale() . '#' . __('messages.slugs.solutions') }}" class="nav-link text-white/80 hover:text-primary transition-colors">
                             {{ __('messages.solutions.wall') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ '/' . app()->getLocale() . '#solutions' }}" class="nav-link text-white/80 hover:text-primary transition-colors">
+                        <a href="{{ '/' . app()->getLocale() . '#' . __('messages.slugs.solutions') }}" class="nav-link text-white/80 hover:text-primary transition-colors">
                             {{ __('messages.solutions.ceiling') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ '/' . app()->getLocale() . '#solutions' }}" class="nav-link text-white/80 hover:text-primary transition-colors">
+                        <a href="{{ '/' . app()->getLocale() . '#' . __('messages.slugs.solutions') }}" class="nav-link text-white/80 hover:text-primary transition-colors">
                             {{ __('messages.solutions.vibration') }}
                         </a>
                     </li>
@@ -74,27 +74,27 @@
                 <h3 class="font-semibold mb-4">{{ __('messages.footer.company_title') }}</h3>
                 <ul class="space-y-2 text-sm">
                     <li>
-                        <a href="{{ '/' . app()->getLocale() . '#about' }}" class="nav-link text-white/80 hover:text-primary transition-colors">
+                        <a href="{{ '/' . app()->getLocale() . '#' . __('messages.slugs.about') }}" class="nav-link text-white/80 hover:text-primary transition-colors">
                             {{ __('messages.nav.about') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ '/' . app()->getLocale() . '#solutions' }}" class="nav-link text-white/80 hover:text-primary transition-colors">
+                        <a href="{{ '/' . app()->getLocale() . '#' . __('messages.slugs.solutions') }}" class="nav-link text-white/80 hover:text-primary transition-colors">
                             {{ __('messages.nav.solutions') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ '/' . app()->getLocale() . '#products' }}" class="nav-link text-white/80 hover:text-primary transition-colors">
+                        <a href="{{ '/' . app()->getLocale() . '#' . __('messages.slugs.products') }}" class="nav-link text-white/80 hover:text-primary transition-colors">
                             {{ __('messages.nav.products') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ '/' . app()->getLocale() . '#references' }}" class="nav-link text-white/80 hover:text-primary transition-colors">
+                        <a href="{{ '/' . app()->getLocale() . '#' . __('messages.slugs.references') }}" class="nav-link text-white/80 hover:text-primary transition-colors">
                             {{ __('messages.nav.references') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ '/' . app()->getLocale() . '#contact' }}" class="nav-link text-white/80 hover:text-primary transition-colors">
+                        <a href="{{ '/' . app()->getLocale() . '#' . __('messages.slugs.contact') }}" class="nav-link text-white/80 hover:text-primary transition-colors">
                             {{ __('messages.nav.contact') }}
                         </a>
                     </li>

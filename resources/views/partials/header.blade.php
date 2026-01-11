@@ -14,22 +14,22 @@
 
             <!-- Desktop Navigation -->
             <div class="hidden md:flex md:items-center md:gap-4 lg:gap-6">
-                <a href="{{ '/' . app()->getLocale() . '#home' }}" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
+                <a href="{{ '/' . app()->getLocale() . '#' . __('messages.slugs.home') }}" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     {{ __('messages.nav.home') }}
                 </a>
-                <a href="{{ '/' . app()->getLocale() . '#about' }}" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
+                <a href="{{ '/' . app()->getLocale() . '#' . __('messages.slugs.about') }}" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     {{ __('messages.nav.about') }}
                 </a>
-                <a href="{{ '/' . app()->getLocale() . '#solutions' }}" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
+                <a href="{{ '/' . app()->getLocale() . '#' . __('messages.slugs.solutions') }}" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     {{ __('messages.nav.solutions') }}
                 </a>
-                <a href="{{ '/' . app()->getLocale() . '#products' }}" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
+                <a href="{{ '/' . app()->getLocale() . '#' . __('messages.slugs.products') }}" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     {{ __('messages.nav.products') }}
                 </a>
-                <a href="{{ '/' . app()->getLocale() . '#references' }}" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
+                <a href="{{ '/' . app()->getLocale() . '#' . __('messages.slugs.references') }}" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     {{ __('messages.nav.references') }}
                 </a>
-                <a href="{{ '/' . app()->getLocale() . '#contact' }}" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
+                <a href="{{ '/' . app()->getLocale() . '#' . __('messages.slugs.contact') }}" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     {{ __('messages.nav.contact') }}
                 </a>
 
@@ -81,27 +81,27 @@
              class="md:hidden py-4 border-t border-gray-200"
              style="display: none;">
             <div class="flex flex-col gap-4">
-                <a href="{{ '/' . app()->getLocale() . '#home' }}" @click="mobileMenuOpen = false"
+                <a href="{{ '/' . app()->getLocale() . '#' . __('messages.slugs.home') }}" @click="mobileMenuOpen = false"
                    class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     {{ __('messages.nav.home') }}
                 </a>
-                <a href="{{ '/' . app()->getLocale() . '#about' }}" @click="mobileMenuOpen = false"
+                <a href="{{ '/' . app()->getLocale() . '#' . __('messages.slugs.about') }}" @click="mobileMenuOpen = false"
                    class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     {{ __('messages.nav.about') }}
                 </a>
-                <a href="{{ '/' . app()->getLocale() . '#solutions' }}" @click="mobileMenuOpen = false"
+                <a href="{{ '/' . app()->getLocale() . '#' . __('messages.slugs.solutions') }}" @click="mobileMenuOpen = false"
                    class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     {{ __('messages.nav.solutions') }}
                 </a>
-                <a href="{{ '/' . app()->getLocale() . '#products' }}" @click="mobileMenuOpen = false"
+                <a href="{{ '/' . app()->getLocale() . '#' . __('messages.slugs.products') }}" @click="mobileMenuOpen = false"
                    class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     {{ __('messages.nav.products') }}
                 </a>
-                <a href="{{ '/' . app()->getLocale() . '#references' }}" @click="mobileMenuOpen = false"
+                <a href="{{ '/' . app()->getLocale() . '#' . __('messages.slugs.references') }}" @click="mobileMenuOpen = false"
                    class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     {{ __('messages.nav.references') }}
                 </a>
-                <a href="{{ '/' . app()->getLocale() . '#contact' }}" @click="mobileMenuOpen = false"
+                <a href="{{ '/' . app()->getLocale() . '#' . __('messages.slugs.contact') }}" @click="mobileMenuOpen = false"
                    class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     {{ __('messages.nav.contact') }}
                 </a>

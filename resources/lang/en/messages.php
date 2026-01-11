@@ -11,6 +11,17 @@ return [
         'contact' => 'Contact',
     ],
 
+    // Slugs for section IDs
+    'slugs' => [
+        'home' => 'home',
+        'about' => 'about',
+        'isolgomma' => 'isolgomma',
+        'solutions' => 'solutions',
+        'products' => 'products',
+        'references' => 'references',
+        'contact' => 'contact',
+    ],
+
     // Hero Section
     'hero' => [
         'slide1' => [
@@ -81,6 +92,57 @@ return [
     'products' => [
         'badge' => 'Product Groups',
         'title' => 'Innovative Insulation Products',
+        'subtitle' => 'Comprehensive sound and vibration insulation solutions with Italian Isolgomma brand',
+        'categories' => [
+            [
+                'name' => 'Floating Floor - Under-Screed Insulation',
+                'description' => 'Specially developed materials for impact sound insulation in floor applications. Maximum sound insulation performance with products like Roll, Uproll, Grei, Point used under floating screed systems.',
+                'icon' => 'floor',
+                'products' => ['Roll', 'Uproll', 'Grei', 'Point', 'Bifloor', 'Syl AD'],
+                'image' => 'acoustic-floating-floor-installation-with-insulati.jpg',
+                'applications' => 'Residential, hotel, office, hospital'
+            ],
+            [
+                'name' => 'Underlay Materials',
+                'description' => 'Thin insulation materials applied under final floor coverings such as parquet, laminate, vinyl. Provides both sound insulation and comfort.',
+                'icon' => 'layers',
+                'products' => ['Barrier Plus', 'Underfloor', 'Acoustic Plus'],
+                'image' => 'modern-apartment-interior-with-sound-insulation.jpg',
+                'applications' => 'Residential, commercial spaces'
+            ],
+            [
+                'name' => 'Wall and Ceiling Insulation',
+                'description' => 'Special materials used in wall and ceiling applications for airborne sound insulation and structural vibration control. Ideal solutions for suspended ceiling systems and partition walls.',
+                'icon' => 'wall',
+                'products' => ['Wallsound', 'Ceiling Sound', 'Acoustic Panel'],
+                'image' => 'soundproof-wall-with-acoustic-panels-installation.jpg',
+                'applications' => 'Studio, cinema, conference hall'
+            ],
+            [
+                'name' => 'Vibration Control',
+                'description' => 'Special rubber and elastomer materials developed for isolation of machine and equipment-induced vibrations. Excellent performance in industrial and commercial applications.',
+                'icon' => 'vibration',
+                'products' => ['Vibro Pad', 'Machine Mount', 'Spring Isolator'],
+                'image' => 'industrial-vibration-damping-system-with-rubber-ma.jpg',
+                'applications' => 'Factory, shopping mall, fitness center'
+            ],
+            [
+                'name' => 'Rail Systems',
+                'description' => 'Specially developed vibration and noise insulation systems for metro, tram and railway lines. Professional solutions in urban infrastructure projects.',
+                'icon' => 'rail',
+                'products' => ['Rail Pad', 'Track Mat', 'Sleeper Pad'],
+                'image' => 'modern-recording-studio-with-acoustic-foam-panels-.jpg',
+                'applications' => 'Metro, tram, railway'
+            ],
+            [
+                'name' => 'Auxiliary Materials',
+                'description' => 'Auxiliary materials such as tape, joint filler, adhesive that complete insulation applications. All detail products necessary for professional application.',
+                'icon' => 'tools',
+                'products' => ['Acoustic Tape', 'Joint Filler', 'Adhesive'],
+                'image' => 'acoustic-ceiling-insulation-with-suspended-system.jpg',
+                'applications' => 'All applications'
+            ]
+        ],
         'residential' => 'Residential Solutions',
         'residential_desc' => 'Acoustic comfort for apartments and houses',
         'commercial' => 'Commercial Buildings',
@@ -134,8 +196,107 @@ return [
     ],
 
     'references' => [
+        'badge' => 'Our References',
         'title' => 'Our References',
         'subtitle' => 'As your trusted solution partner, we have completed many prestigious projects',
+        'projects' => [
+            [
+                'name' => 'Doğuş Power Center - NTV & Kral TV',
+                'description' => 'Professional sound insulation and acoustic applications for media center',
+                'category' => 'Commercial',
+                'image' => '1 -doğuş power center ntv kral tv.jpg'
+            ],
+            [
+                'name' => 'Astoria Residence',
+                'description' => 'Floor and wall insulation systems for luxury residential project',
+                'category' => 'Residential',
+                'image' => '2 -astoria residence.jpg'
+            ],
+            [
+                'name' => 'Swiss Hotel Bosphorus',
+                'description' => 'Comprehensive acoustic comfort solutions for 5-star hotel',
+                'category' => 'Hotel',
+                'image' => '3 -swiss hotel bosphorus.jpg'
+            ],
+            [
+                'name' => 'D-Gym Etiler',
+                'description' => 'Vibration isolation and sound insulation for fitness center',
+                'category' => 'Sports',
+                'image' => '4 -dgym etiler.jpg'
+            ],
+            [
+                'name' => 'Regnum Carya',
+                'description' => 'Insulation applications for resort hotel complex',
+                'category' => 'Hotel',
+                'image' => '5 -regnum carya.jpg'
+            ],
+            [
+                'name' => 'Vodafone Arena',
+                'description' => 'Acoustic performance and vibration control for stadium',
+                'category' => 'Sports',
+                'image' => '6 -vodafone arena.jpg'
+            ],
+            [
+                'name' => 'Eyüboğlu Educational Institutions',
+                'description' => 'Sound insulation and acoustic arrangement for educational facilities',
+                'category' => 'Education',
+                'image' => '7 -eyüboğlu.webp'
+            ],
+            [
+                'name' => 'Maçka Residence',
+                'description' => 'Special insulation solutions for prestigious residential project',
+                'category' => 'Residential',
+                'image' => '8 -maçka residence.jpg'
+            ],
+            [
+                'name' => 'Acıbadem Fulya Hospital',
+                'description' => 'Vibration control and sound insulation for healthcare facility',
+                'category' => 'Healthcare',
+                'image' => '9 -acıbadem fulya.jpg'
+            ],
+            [
+                'name' => 'Fairmont Quasar',
+                'description' => 'Comprehensive acoustic comfort applications for luxury hotel',
+                'category' => 'Hotel',
+                'image' => '10 - fairmont quasar.jpg'
+            ],
+            [
+                'name' => 'Zorlu Center',
+                'description' => 'Insulation systems for shopping mall and business center complex',
+                'category' => 'Commercial',
+                'image' => '11 - zorlu center.jpg'
+            ],
+            [
+                'name' => 'Diyarbakır Zekai Karakoç Culture and Congress Center',
+                'description' => 'Special acoustic solutions for culture and congress center',
+                'category' => 'Culture',
+                'image' => '12 -diyarbakır zekai karakoç kültür ve kongre merkezi.jpg'
+            ],
+            [
+                'name' => 'DoubleTree Hilton Antalya City Center',
+                'description' => 'Sound insulation and comfort applications for city hotel',
+                'category' => 'Hotel',
+                'image' => '13 -Double Tree Hilton Antalya City center.jpg'
+            ],
+            [
+                'name' => 'Etlik City Hospital',
+                'description' => 'Vibration and sound control for large hospital complex',
+                'category' => 'Healthcare',
+                'image' => '14 -etlik şehir hastanesi.jpg'
+            ],
+            [
+                'name' => 'Regnum Crown Hotel',
+                'description' => 'Comprehensive insulation solutions for resort hotel',
+                'category' => 'Hotel',
+                'image' => '15 -regnum crown hotel.webp'
+            ],
+            [
+                'name' => 'MacFit Maltepe Ofispark',
+                'description' => 'Vibration isolation systems for fitness center',
+                'category' => 'Sports',
+                'image' => '16- macfit maltepe ofispark.png'
+            ]
+        ]
     ],
 
     'footer' => [

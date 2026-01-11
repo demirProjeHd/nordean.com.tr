@@ -11,6 +11,17 @@ return [
         'contact' => 'İletişim',
     ],
 
+    // Slugs for section IDs
+    'slugs' => [
+        'home' => 'ana-sayfa',
+        'about' => 'hakkimizda',
+        'isolgomma' => 'isolgomma',
+        'solutions' => 'cozumler',
+        'products' => 'urunler',
+        'references' => 'referanslarimiz',
+        'contact' => 'iletisim',
+    ],
+
     // Hero Section
     'hero' => [
         'slide1' => [
@@ -81,6 +92,57 @@ return [
     'products' => [
         'badge' => 'Ürün Grupları',
         'title' => 'Yenilikçi Yalıtım Ürünleri',
+        'subtitle' => 'İtalyan Isolgomma markası ile kapsamlı ses ve titreşim yalıtımı çözümleri',
+        'categories' => [
+            [
+                'name' => 'Yüzer Döşeme - Şap Altı Yalıtımı',
+                'description' => 'Zemin uygulamalarında darbe sesi yalıtımı için özel olarak geliştirilmiş malzemeler. Yüzer şap sistemleri altında kullanılan Roll, Uproll, Grei, Point gibi ürünlerle maksimum ses yalıtımı performansı.',
+                'icon' => 'floor',
+                'products' => ['Roll', 'Uproll', 'Grei', 'Point', 'Bifloor', 'Syl AD'],
+                'image' => 'acoustic-floating-floor-installation-with-insulati.jpg',
+                'applications' => 'Konut, otel, ofis, hastane'
+            ],
+            [
+                'name' => 'Son Kat Kaplama Altı',
+                'description' => 'Parke, laminat, vinil gibi son kat zemin kaplamaları altına uygulanan ince yalıtım malzemeleri. Hem ses yalıtımı hem de konfor sağlar.',
+                'icon' => 'layers',
+                'products' => ['Barrier Plus', 'Underfloor', 'Acoustic Plus'],
+                'image' => 'modern-apartment-interior-with-sound-insulation.jpg',
+                'applications' => 'Konut, ticari mekanlar'
+            ],
+            [
+                'name' => 'Duvar ve Tavan Yalıtımı',
+                'description' => 'Hava sesi yalıtımı ve yapısal titreşim kontrolü için duvar ve tavan uygulamalarında kullanılan özel malzemeler. Asma tavan sistemleri ve bölme duvarlar için ideal çözümler.',
+                'icon' => 'wall',
+                'products' => ['Wallsound', 'Ceiling Sound', 'Acoustic Panel'],
+                'image' => 'soundproof-wall-with-acoustic-panels-installation.jpg',
+                'applications' => 'Stüdyo, sinema, konferans salonu'
+            ],
+            [
+                'name' => 'Titreşim Kontrolü',
+                'description' => 'Makine ve ekipman kaynaklı titreşimlerin izolasyonu için geliştirilmiş özel kauçuk ve elastomer malzemeler. Endüstriyel ve ticari uygulamalarda mükemmel performans.',
+                'icon' => 'vibration',
+                'products' => ['Vibro Pad', 'Machine Mount', 'Spring Isolator'],
+                'image' => 'industrial-vibration-damping-system-with-rubber-ma.jpg',
+                'applications' => 'Fabrika, AVM, fitness merkezi'
+            ],
+            [
+                'name' => 'Raylı Sistemler',
+                'description' => 'Metro, tramvay ve demiryolu hatları için özel geliştirilmiş titreşim ve gürültü yalıtım sistemleri. Kentsel altyapı projelerinde profesyonel çözümler.',
+                'icon' => 'rail',
+                'products' => ['Rail Pad', 'Track Mat', 'Sleeper Pad'],
+                'image' => 'modern-recording-studio-with-acoustic-foam-panels-.jpg',
+                'applications' => 'Metro, tramvay, demiryolu'
+            ],
+            [
+                'name' => 'Yardımcı Malzemeler',
+                'description' => 'Yalıtım uygulamalarını tamamlayan bant, derz dolgu, yapıştırıcı gibi yardımcı malzemeler. Profesyonel uygulama için gerekli tüm detay ürünleri.',
+                'icon' => 'tools',
+                'products' => ['Acoustic Tape', 'Joint Filler', 'Adhesive'],
+                'image' => 'acoustic-ceiling-insulation-with-suspended-system.jpg',
+                'applications' => 'Tüm uygulamalar'
+            ]
+        ],
         'residential' => 'Konut Çözümleri',
         'residential_desc' => 'Daireler ve müstakil evler için akustik konfor',
         'commercial' => 'Ticari Yapılar',
@@ -134,8 +196,107 @@ return [
     ],
 
     'references' => [
+        'badge' => 'Referanslarımız',
         'title' => 'Referanslarımız',
         'subtitle' => 'Güvenilir çözüm ortağınız olarak birçok prestijli projeye imza attık',
+        'projects' => [
+            [
+                'name' => 'Doğuş Power Center - NTV & Kral TV',
+                'description' => 'Medya merkezi için profesyonel ses yalıtımı ve akustik uygulamalar',
+                'category' => 'Ticari',
+                'image' => '1 -doğuş power center ntv kral tv.jpg'
+            ],
+            [
+                'name' => 'Astoria Residence',
+                'description' => 'Lüks konut projesi için zemin ve duvar yalıtım sistemleri',
+                'category' => 'Konut',
+                'image' => '2 -astoria residence.jpg'
+            ],
+            [
+                'name' => 'Swiss Hotel Bosphorus',
+                'description' => '5 yıldızlı otel için kapsamlı akustik konfor çözümleri',
+                'category' => 'Otel',
+                'image' => '3 -swiss hotel bosphorus.jpg'
+            ],
+            [
+                'name' => 'D-Gym Etiler',
+                'description' => 'Fitness merkezi için titreşim izolasyonu ve ses yalıtımı',
+                'category' => 'Spor',
+                'image' => '4 -dgym etiler.jpg'
+            ],
+            [
+                'name' => 'Regnum Carya',
+                'description' => 'Resort otel kompleksi için yalıtım uygulamaları',
+                'category' => 'Otel',
+                'image' => '5 -regnum carya.jpg'
+            ],
+            [
+                'name' => 'Vodafone Arena',
+                'description' => 'Stadyum için akustik performans ve titreşim kontrolü',
+                'category' => 'Spor',
+                'image' => '6 -vodafone arena.jpg'
+            ],
+            [
+                'name' => 'Eyüboğlu Eğitim Kurumları',
+                'description' => 'Eğitim tesisleri için ses yalıtımı ve akustik düzenleme',
+                'category' => 'Eğitim',
+                'image' => '7 -eyüboğlu.webp'
+            ],
+            [
+                'name' => 'Maçka Residence',
+                'description' => 'Prestijli konut projesi için özel yalıtım çözümleri',
+                'category' => 'Konut',
+                'image' => '8 -maçka residence.jpg'
+            ],
+            [
+                'name' => 'Acıbadem Fulya Hastanesi',
+                'description' => 'Sağlık tesisi için titreşim kontrolü ve ses yalıtımı',
+                'category' => 'Sağlık',
+                'image' => '9 -acıbadem fulya.jpg'
+            ],
+            [
+                'name' => 'Fairmont Quasar',
+                'description' => 'Lüks otel için kapsamlı akustik konfor uygulamaları',
+                'category' => 'Otel',
+                'image' => '10 - fairmont quasar.jpg'
+            ],
+            [
+                'name' => 'Zorlu Center',
+                'description' => 'AVM ve iş merkezi kompleksi için yalıtım sistemleri',
+                'category' => 'Ticari',
+                'image' => '11 - zorlu center.jpg'
+            ],
+            [
+                'name' => 'Diyarbakır Zekai Karakoç Kültür ve Kongre Merkezi',
+                'description' => 'Kültür ve kongre merkezi için özel akustik çözümler',
+                'category' => 'Kültür',
+                'image' => '12 -diyarbakır zekai karakoç kültür ve kongre merkezi.jpg'
+            ],
+            [
+                'name' => 'DoubleTree Hilton Antalya City Center',
+                'description' => 'Şehir oteli için ses yalıtımı ve konfor uygulamaları',
+                'category' => 'Otel',
+                'image' => '13 -Double Tree Hilton Antalya City center.jpg'
+            ],
+            [
+                'name' => 'Etlik Şehir Hastanesi',
+                'description' => 'Büyük hastane kompleksi için titreşim ve ses kontrolü',
+                'category' => 'Sağlık',
+                'image' => '14 -etlik şehir hastanesi.jpg'
+            ],
+            [
+                'name' => 'Regnum Crown Hotel',
+                'description' => 'Resort otel için kapsamlı yalıtım çözümleri',
+                'category' => 'Otel',
+                'image' => '15 -regnum crown hotel.webp'
+            ],
+            [
+                'name' => 'MacFit Maltepe Ofispark',
+                'description' => 'Fitness merkezi için titreşim izolasyonu sistemleri',
+                'category' => 'Spor',
+                'image' => '16- macfit maltepe ofispark.png'
+            ]
+        ]
     ],
 
     'footer' => [

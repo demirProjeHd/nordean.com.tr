@@ -5,7 +5,7 @@
     @include('partials.hero')
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
+    <section id="{{ __('messages.slugs.about') }}" class="py-20 bg-white">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <!-- Left Side - Content -->
@@ -63,7 +63,7 @@
     </section>
 
     <!-- Isolgomma Section -->
-    <section id="isolgomma" class="py-20 bg-gray-50">
+    <section id="{{ __('messages.slugs.isolgomma') }}" class="py-20 bg-gray-50">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <span class="inline-block px-4 py-2 bg-red-100 text-primary rounded-full text-sm font-semibold mb-4">
@@ -112,7 +112,7 @@
     </section>
 
     <!-- Solutions Section -->
-    <section id="solutions" class="py-20 bg-white">
+    <section id="{{ __('messages.slugs.solutions') }}" class="py-20 bg-white">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <span class="inline-block px-4 py-2 bg-red-100 text-primary rounded-full text-sm font-semibold mb-4">
@@ -211,8 +211,8 @@
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section id="products" class="py-20 bg-gray-50">
+    <!-- Products Section with Slider -->
+    <section id="{{ __('messages.slugs.products') }}" class="py-20 bg-white">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <span class="inline-block px-4 py-2 bg-red-100 text-primary rounded-full text-sm font-semibold mb-4">
@@ -221,39 +221,293 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                     {{ __('messages.products.title') }}
                 </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    {{ __('messages.products.subtitle') }}
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-                    <img src="{{ asset('images/modern-apartment-interior-with-sound-insulation.jpg') }}" alt="Residential" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ __('messages.products.residential') }}</h3>
-                        <p class="text-gray-600">{{ __('messages.products.residential_desc') }}</p>
+            <!-- Products Slider -->
+            <div class="relative" x-data="productsSlider()" x-on:keydown.escape.window="closeLightbox()">
+                <!-- Slider Container -->
+                <div class="overflow-hidden">
+                    <div class="flex transition-transform duration-500 ease-out"
+                         :style="`transform: translateX(-${currentSlide * 100}%)`">
+                        @php
+                            $categories = __('messages.products.categories');
+                            $chunks = array_chunk($categories, 3);
+                        @endphp
+
+                        @foreach($chunks as $chunkIndex => $categoryChunk)
+                        <div class="min-w-full flex-shrink-0">
+                            <!-- Products Grid -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1216px] mx-auto">
+                                @foreach($categoryChunk as $index => $category)
+                                <div @click="openLightbox({{ json_encode($category) }})"
+                                     class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 cursor-pointer">
+                                    <div class="relative w-full h-[200px] overflow-hidden bg-gray-100">
+                                        <img src="{{ asset('images/' . $category['image']) }}"
+                                             alt="{{ $category['name'] }}"
+                                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                                        <!-- Icon Badge -->
+                                        <div class="absolute top-3 left-3">
+                                            <div class="w-12 h-12 bg-white/90 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                                                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    @if($category['icon'] == 'floor')
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+                                                    @elseif($category['icon'] == 'layers')
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/>
+                                                    @elseif($category['icon'] == 'wall')
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                                    @elseif($category['icon'] == 'vibration')
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                                    @elseif($category['icon'] == 'rail')
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                                                    @else
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                                                    @endif
+                                                </svg>
+                                            </div>
+                                        </div>
+
+                                        <!-- Click indicator -->
+                                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <div class="bg-white/20 backdrop-blur-sm rounded-full p-3">
+                                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Card Content -->
+                                    <div class="p-4">
+                                        <h3 class="text-lg font-bold text-gray-900 mb-1 line-clamp-1">
+                                            {{ $category['name'] }}
+                                        </h3>
+                                        <p class="text-sm text-gray-600 line-clamp-2 mb-3">
+                                            {{ $category['description'] }}
+                                        </p>
+                                        <div class="flex items-center gap-2 text-xs text-gray-500">
+                                            <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                            </svg>
+                                            <span class="line-clamp-1">{{ $category['applications'] }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
                 </div>
-                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-                    <img src="{{ asset('images/modern-office-meeting-room-with-acoustic-panels-so.jpg') }}" alt="Commercial" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ __('messages.products.commercial') }}</h3>
-                        <p class="text-gray-600">{{ __('messages.products.commercial_desc') }}</p>
+
+                @if(count($chunks) > 1)
+                <!-- Navigation -->
+                <div class="flex items-center justify-center gap-4 mt-8">
+                    <!-- Previous Button -->
+                    <button @click="prevSlide()"
+                            class="p-3 rounded-full bg-white hover:bg-primary hover:text-white text-gray-900 transition-all shadow-md hover:shadow-lg"
+                            aria-label="Previous products">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+
+                    <!-- Progress Dots -->
+                    <div class="flex gap-2">
+                        @foreach($chunks as $index => $chunk)
+                        <button @click="goToSlide({{ $index }})"
+                                class="h-2 rounded-full transition-all"
+                                :class="currentSlide === {{ $index }} ? 'bg-primary w-8' : 'bg-gray-300 w-2 hover:bg-gray-400'"
+                                aria-label="Go to page {{ $index + 1 }}">
+                        </button>
+                        @endforeach
                     </div>
+
+                    <!-- Next Button -->
+                    <button @click="nextSlide()"
+                            class="p-3 rounded-full bg-primary hover:bg-primary/90 text-white transition-all shadow-md hover:shadow-lg"
+                            aria-label="Next products">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
                 </div>
-                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-                    <img src="{{ asset('images/industrial-factory-floor.jpg') }}" alt="Industrial" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ __('messages.products.industrial') }}</h3>
-                        <p class="text-gray-600">{{ __('messages.products.industrial_desc') }}</p>
+                @endif
+
+                <!-- Lightbox Modal -->
+                <div x-show="lightboxOpen"
+                     x-transition:enter="transition ease-out duration-300"
+                     x-transition:enter-start="opacity-0"
+                     x-transition:enter-end="opacity-100"
+                     x-transition:leave="transition ease-in duration-200"
+                     x-transition:leave-start="opacity-100"
+                     x-transition:leave-end="opacity-0"
+                     class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+                     style="display: none;"
+                     @click="closeLightbox()">
+
+                    <!-- Modal Content -->
+                    <div @click.stop
+                         x-show="lightboxOpen"
+                         x-transition:enter="transition ease-out duration-300"
+                         x-transition:enter-start="opacity-0 scale-95"
+                         x-transition:enter-end="opacity-100 scale-100"
+                         x-transition:leave="transition ease-in duration-200"
+                         x-transition:leave-start="opacity-100 scale-100"
+                         x-transition:leave-end="opacity-0 scale-95"
+                         class="relative bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden">
+
+                        <!-- Close Button -->
+                        <button @click="closeLightbox()"
+                                class="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-black/70 text-white rounded-full transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
+
+                        <div class="grid md:grid-cols-2 gap-0 max-h-[90vh] overflow-y-auto">
+                            <!-- Image Side -->
+                            <div class="relative aspect-[4/3] md:aspect-auto md:min-h-[500px] bg-gray-100">
+                                <img :src="`{{ asset('images/') }}/${selectedCategory?.image}`"
+                                     :alt="selectedCategory?.name"
+                                     class="w-full h-full object-cover">
+                                <div class="absolute top-4 left-4">
+                                    <div class="w-16 h-16 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
+                                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <template x-if="selectedCategory?.icon == 'floor'">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+                                            </template>
+                                            <template x-if="selectedCategory?.icon == 'layers'">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/>
+                                            </template>
+                                            <template x-if="selectedCategory?.icon == 'wall'">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                            </template>
+                                            <template x-if="selectedCategory?.icon == 'vibration'">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                            </template>
+                                            <template x-if="selectedCategory?.icon == 'rail'">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                                            </template>
+                                            <template x-if="selectedCategory?.icon == 'tools'">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                                            </template>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Content Side -->
+                            <div class="p-8 md:p-10 flex flex-col justify-center">
+                                <div class="mb-6">
+                                    <div class="flex items-center gap-2 mb-4">
+                                        <div class="h-1 w-12 bg-primary rounded-full"></div>
+                                        <span class="text-sm font-semibold text-primary uppercase tracking-wider">
+                                            {{ __('messages.products.badge') }}
+                                        </span>
+                                    </div>
+                                    <h3 class="text-3xl font-bold text-gray-900 mb-4"
+                                        x-text="selectedCategory?.name"></h3>
+                                    <p class="text-lg text-gray-600 leading-relaxed"
+                                       x-text="selectedCategory?.description"></p>
+                                </div>
+
+                                <!-- Products List -->
+                                <div class="mb-6 pt-6 border-t border-gray-200">
+                                    <h4 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wider">
+                                        {{ __('messages.products.badge') }}
+                                    </h4>
+                                    <div class="flex flex-wrap gap-2">
+                                        <template x-for="product in selectedCategory?.products" :key="product">
+                                            <span class="inline-block px-3 py-1.5 bg-gray-100 text-gray-700 rounded-full text-sm font-medium"
+                                                  x-text="product"></span>
+                                        </template>
+                                    </div>
+                                </div>
+
+                                <!-- Applications -->
+                                <div class="pt-6 border-t border-gray-200">
+                                    <div class="flex items-center gap-3 text-sm text-gray-500">
+                                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                        </svg>
+                                        <span>
+                                            <span class="font-semibold text-gray-900">{{ __('messages.solutions.badge') }}:</span>
+                                            <span x-text="selectedCategory?.applications"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    @push('scripts')
+    <script>
+    function productsSlider() {
+        return {
+            currentSlide: 0,
+            totalSlides: {{ count($chunks) }},
+            autoplayInterval: null,
+            lightboxOpen: false,
+            selectedCategory: null,
+            init() {
+                if (this.totalSlides > 1) {
+                    this.startAutoplay();
+                }
+            },
+            nextSlide() {
+                this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+                this.resetAutoplay();
+            },
+            prevSlide() {
+                this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+                this.resetAutoplay();
+            },
+            goToSlide(index) {
+                this.currentSlide = index;
+                this.resetAutoplay();
+            },
+            startAutoplay() {
+                this.autoplayInterval = setInterval(() => {
+                    this.nextSlide();
+                }, 6000);
+            },
+            resetAutoplay() {
+                if (this.autoplayInterval) {
+                    clearInterval(this.autoplayInterval);
+                    this.startAutoplay();
+                }
+            },
+            openLightbox(category) {
+                this.selectedCategory = category;
+                this.lightboxOpen = true;
+                document.body.style.overflow = 'hidden'; // Prevent body scroll
+            },
+            closeLightbox() {
+                this.lightboxOpen = false;
+                document.body.style.overflow = ''; // Restore body scroll
+                setTimeout(() => {
+                    this.selectedCategory = null;
+                }, 300); // Wait for transition to complete
+            }
+        }
+    }
+    </script>
+    @endpush
+
     <!-- References Section -->
     @include('partials.references')
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-50">
+    <section id="{{ __('messages.slugs.contact') }}" class="py-20 bg-gray-50">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <span class="inline-block px-4 py-2 bg-red-100 text-primary rounded-full text-sm font-semibold mb-4">
@@ -467,7 +721,7 @@
             <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
                 {{ __('messages.cta.description') }}
             </p>
-            <a href="#contact" class="nav-link inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-white/90 transition-all shadow-lg hover:shadow-xl">
+            <a href="#{{ __('messages.slugs.contact') }}" class="nav-link inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-white/90 transition-all shadow-lg hover:shadow-xl">
                 {{ __('messages.cta.button') }}
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
@@ -566,7 +820,16 @@ function contactForm() {
 
                     // Scroll to success message
                     setTimeout(() => {
-                        document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        const contactSection = document.getElementById('{{ __("messages.slugs.contact") }}');
+                        if (contactSection) {
+                            const headerOffset = 80;
+                            const elementPosition = contactSection.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
                     }, 100);
                 } else {
                     this.error = true;
