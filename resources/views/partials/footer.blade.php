@@ -1,6 +1,6 @@
 <footer class="bg-secondary text-white">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div class="grid md:grid-cols-4 gap-8 mb-8">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <div class="grid md:grid-cols-4 gap-8 mb-6">
             <!-- Company Info -->
             <div class="md:col-span-2">
                 <div class="flex items-center gap-4 mb-4">
@@ -92,7 +92,7 @@
             </div>
         </div>
 
-        <div class="border-t border-white/10 pt-8">
+        <div class="border-t border-white/10 pt-6">
             <div class="flex flex-col md:flex-row justify-between items-center gap-4">
                 <p class="text-sm text-white/60">
                     &copy; {{ date('Y') }} NORDEAN Mühendislik. {{ __('messages.footer.rights') }}
