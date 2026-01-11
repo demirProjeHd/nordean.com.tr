@@ -97,7 +97,7 @@
                 <a href="https://www.projehd.com" target="_blank" rel="noopener noreferrer"
                    class="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors">
                     <span>Design by</span>
-                    <img src="https://www.projehd.com/assets/img/logo-icon.png" alt="ProjeHD" class="h-5 w-auto">
+                    <img src="https://www.projehd.com/assets/img/logo-icon.png" alt="ProjeHD" class="h-8 w-auto">
                     <span class="font-semibold">ProjeHD</span>
                 </a>
                 <p class="text-sm text-white/60">
