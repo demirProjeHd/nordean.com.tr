@@ -79,8 +79,23 @@
                         </a>
                     </li>
                     <li>
+                        <a href="#solutions" class="nav-link text-white/80 hover:text-primary transition-colors">
+                            {{ __('messages.nav.solutions') }}
+                        </a>
+                    </li>
+                    <li>
                         <a href="#products" class="nav-link text-white/80 hover:text-primary transition-colors">
                             {{ __('messages.nav.products') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#references" class="nav-link text-white/80 hover:text-primary transition-colors">
+                            {{ __('messages.nav.references') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="nav-link text-white/80 hover:text-primary transition-colors">
+                            {{ __('messages.nav.contact') }}
                         </a>
                     </li>
                     <li>
