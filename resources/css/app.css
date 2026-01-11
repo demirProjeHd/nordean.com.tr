@@ -76,3 +76,28 @@ html {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+/* Pristine validation styles */
+.form-field {
+  position: relative;
+}
+
+.pristine-error {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  display: block;
+}
+
+.has-danger input,
+.has-danger select,
+.has-danger textarea {
+  border-color: #dc2626 !important;
+  background-color: #fef2f2 !important;
+}
+
+.has-success input,
+.has-success select,
+.has-success textarea {
+  border-color: #16a34a !important;
+}

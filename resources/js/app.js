@@ -6,8 +6,10 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/grid';
+import Pristine from 'pristinejs';
 
 window.Alpine = Alpine;
+window.Pristine = Pristine;
 Alpine.start();
 
 // Make Swiper available globally
