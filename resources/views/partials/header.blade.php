@@ -1,10 +1,10 @@
 <header class="fixed top-0 left-0 right-0 z-50 bg-white backdrop-blur-md border-b border-gray-200" x-data="{ mobileMenuOpen: false }">
     <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex h-20 items-center justify-between">
+        <div class="flex h-16 items-center justify-between">
             <!-- Logo -->
             <div class="flex items-center">
                 <a href="{{ route('home') }}" class="flex items-center gap-3">
-                    <img src="{{ asset('images/nordean-logo.png') }}" alt="NORDEAN Logo" class="h-16 w-auto">
+                    <img src="{{ asset('images/nordean-logo.png') }}" alt="NORDEAN Logo" class="h-14 w-auto">
                     <div class="hidden sm:block border-l border-gray-300 pl-3">
                         <div class="font-bold text-gray-900 leading-none tracking-wide" style="font-size: 17px;">NORDEAN</div>
                         <div class="font-semibold text-primary leading-none tracking-wider" style="font-size: 11px;">{{ __('messages.footer.subtitle') }}</div>
@@ -13,7 +13,7 @@
             </div>
 
             <!-- Desktop Navigation -->
-            <div class="hidden md:flex md:items-center md:gap-8">
+            <div class="hidden md:flex md:items-center md:gap-4">
                 <a href="#home" class="nav-link text-sm font-medium text-gray-900 hover:text-primary transition-colors">
                     {{ __('messages.nav.home') }}
                 </a>
@@ -31,7 +31,7 @@
                 </a>
 
                 <!-- Language Switcher -->
-                <div class="flex items-center gap-2 border-l pl-4 ml-4">
+                <div class="flex items-center gap-2 border-l pl-3 ml-3">
                     <a href="{{ route('lang.switch', 'tr') }}"
                        class="px-3 py-1 text-sm font-medium rounded {{ app()->getLocale() == 'tr' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100' }}">
                         TR
