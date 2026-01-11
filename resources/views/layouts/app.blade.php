@@ -19,8 +19,8 @@
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/icon.svg') }}">
 
     <!-- Styles -->
-    @if(config('app.env') === 'local' && !file_exists(public_path('build/manifest.json')))
-        <!-- Development CDN fallback -->
+    @if(!file_exists(public_path('build/manifest.json')))
+        <!-- CDN fallback (for development and production without build) -->
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
             tailwind.config = {
