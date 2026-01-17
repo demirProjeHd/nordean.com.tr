@@ -5,6 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
+use App\Models\Slider;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Solution;
+use App\Models\Reference;
+use App\Models\PageContent;
+use App\Models\Setting;
 
 class HomeController extends Controller
 {
@@ -59,7 +66,7 @@ class HomeController extends Controller
     {
         Session::put('locale', 'tr');
         App::setLocale('tr');
-        return view('welcome');
+        return $this->showHomePage();
     }
 
     /**
@@ -69,7 +76,34 @@ class HomeController extends Controller
     {
         Session::put('locale', 'en');
         App::setLocale('en');
-        return view('welcome');
+        return $this->showHomePage();
+    }
+
+    /**
+     * Fetch data from database and return home page view
+     */
+    private function showHomePage()
+    {
+        $locale = app()->getLocale();
+        $settings = Setting::all()->pluck('value', 'key');
+
+        $data = [
+            'sliders' => Slider::active()->orderBy('order')->get(),
+            'categories' => Category::with(['products' => function($query) {
+                $query->where('is_active', true)->orderBy('order');
+            }])->active()->orderBy('order')->get(),
+            'products' => Product::with('category')->active()->orderBy('order')->get(),
+            'solutions' => Solution::active()->orderBy('order')->get(),
+            'references' => Reference::active()->orderBy('order')->get(),
+            'pageContents' => PageContent::all()->keyBy('key'),
+            'settings' => $settings,
+            // SEO Meta Tags from settings
+            'title' => $settings["meta_title_{$locale}"] ?? 'NORDEAN - Isolgomma Türkiye Distribütörü',
+            'description' => $settings["meta_description_{$locale}"] ?? 'İtalyan Isolgomma ses ve titreşim yalıtım malzemelerinin Türkiye\'deki tek yetkili distribütörü.',
+            'keywords' => $settings["meta_keywords_{$locale}"] ?? 'isolgomma, ses yalıtımı, titreşim yalıtımı',
+        ];
+
+        return view('welcome', $data);
     }
 
     /**

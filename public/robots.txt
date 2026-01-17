@@ -1,9 +1,24 @@
 User-agent: *
 Allow: /
+Allow: /tr
+Allow: /en
 
-# Disallow admin and private areas
+# Disallow admin panel and private areas
 Disallow: /admin/
+Disallow: /admin
+Disallow: /panel/
+Disallow: /panel
 Disallow: /storage/
+Disallow: /build/
+Disallow: /vendor/
+Disallow: /api/
+
+# Allow product images and documents
+Allow: /images/
+Allow: /storage/products/
 
 # Sitemap location
 Sitemap: https://nordean.com.tr/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1

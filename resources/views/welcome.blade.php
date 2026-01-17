@@ -14,15 +14,16 @@
                         {{ __('messages.about.badge') }}
                     </span>
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                        {{ __('messages.about.title') }}
+                        {{ $pageContents['about']->{'title_' . app()->getLocale()} ?? '' }}
                     </h2>
                     <p class="text-lg text-gray-600 leading-relaxed mb-8">
-                        {{ __('messages.about.description') }}
+                        {{ $pageContents['about']->{'content_' . app()->getLocale()} ?? '' }}
                     </p>
 
                     <div class="relative rounded-lg overflow-hidden aspect-video">
                         <img src="{{ asset('images/professional-sound-insulation-consultation-archite.jpg') }}"
                              alt="NORDEAN Professional Team"
+                             loading="lazy"
                              class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                     </div>
@@ -38,8 +39,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-2">{{ __('messages.mission.title') }}</h3>
-                                <p class="text-gray-600 leading-relaxed">{{ __('messages.mission.description') }}</p>
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">{{ $pageContents['mission']->{'title_' . app()->getLocale()} ?? '' }}</h3>
+                                <p class="text-gray-600 leading-relaxed">{{ $pageContents['mission']->{'content_' . app()->getLocale()} ?? '' }}</p>
                             </div>
                         </div>
                     </div>
@@ -52,8 +53,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-2">{{ __('messages.vision.title') }}</h3>
-                                <p class="text-gray-600 leading-relaxed">{{ __('messages.vision.description') }}</p>
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">{{ $pageContents['vision']->{'title_' . app()->getLocale()} ?? '' }}</h3>
+                                <p class="text-gray-600 leading-relaxed">{{ $pageContents['vision']->{'content_' . app()->getLocale()} ?? '' }}</p>
                             </div>
                         </div>
                     </div>
@@ -70,43 +71,36 @@
                     {{ __('messages.isolgomma.badge') }}
                 </span>
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                    {{ __('messages.isolgomma.title') }}
+                    {{ $pageContents['isolgomma']->{'title_' . app()->getLocale()} ?? '' }}
                 </h2>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                    {{ __('messages.isolgomma.description') }}
+                    {{ $pageContents['isolgomma']->{'content_' . app()->getLocale()} ?? '' }}
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                @php
+                    $features = $pageContents['isolgomma_features']->extra_data ?? [];
+                    $locale = app()->getLocale();
+                    $colors = ['red', 'green', 'purple'];
+                @endphp
+                @foreach($features as $index => $feature)
                 <div class="text-center p-6 bg-white rounded-xl shadow-sm">
-                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-16 h-16 bg-{{ $colors[$index % 3] }}-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-{{ $colors[$index % 3] }}-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            @if($index == 0)
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ __('messages.isolgomma.feature1') }}</h3>
-                    <p class="text-gray-600">{{ __('messages.isolgomma.feature1_desc') }}</p>
-                </div>
-
-                <div class="text-center p-6 bg-white rounded-xl shadow-sm">
-                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            @elseif($index == 1)
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ __('messages.isolgomma.feature2') }}</h3>
-                    <p class="text-gray-600">{{ __('messages.isolgomma.feature2_desc') }}</p>
-                </div>
-
-                <div class="text-center p-6 bg-white rounded-xl shadow-sm">
-                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            @else
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+                            @endif
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ __('messages.isolgomma.feature3') }}</h3>
-                    <p class="text-gray-600">{{ __('messages.isolgomma.feature3_desc') }}</p>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ $feature['title_' . $locale] ?? '' }}</h3>
+                    <p class="text-gray-600">{{ $feature['description_' . $locale] ?? '' }}</p>
                 </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -123,234 +117,71 @@
                 </h2>
             </div>
 
-            <!-- Swiper Container -->
-            <div class="swiper solutions-swiper max-w-[1216px] mx-auto px-4">
-                <div class="swiper-wrapper">
-                    <!-- Floor Solutions -->
-                    <div class="swiper-slide">
-                        <div class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 h-full">
+            <!-- Flickity Container -->
+            <div class="relative" x-data="solutionsLightbox()" x-on:keydown.escape.window="closeLightbox()">
+                <div class="solutions-carousel max-w-[1216px] mx-auto px-4 mb-6">
+                    @foreach($solutions as $solution)
+                    <div class="carousel-cell px-3">
+                        <div @click="openLightbox({{ json_encode([
+                            'title' => $solution->{'title_' . app()->getLocale()},
+                            'description' => $solution->{'description_' . app()->getLocale()},
+                            'image' => $solution->image,
+                            'icon' => $solution->icon
+                        ]) }})"
+                             class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 h-full cursor-pointer flex flex-col">
                             <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
-                                <img src="{{ asset('images/acoustic-floating-floor-installation-with-insulati.jpg') }}"
-                                     alt="{{ __('messages.solutions.floor') }}"
+                                <img src="{{ asset($solution->image) }}"
+                                     alt="{{ $solution->{'title_' . app()->getLocale()} }}"
+                                     loading="lazy"
                                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
                                 <div class="absolute bottom-3 left-3 p-2.5 bg-primary rounded-lg shadow-lg">
                                     <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+                                        {!! $solution->icon !!}
                                     </svg>
                                 </div>
-                            </div>
-                            <div class="p-5">
-                                <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
-                                    {{ __('messages.solutions.floor') }}
-                                </h3>
-                                <p class="text-sm text-gray-600 leading-relaxed">{{ __('messages.solutions.floor_desc') }}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Wall Solutions -->
-                    <div class="swiper-slide">
-                        <div class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 h-full">
-                            <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
-                                <img src="{{ asset('images/soundproof-wall-with-acoustic-panels-installation.jpg') }}"
-                                     alt="{{ __('messages.solutions.wall') }}"
-                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                                <div class="absolute bottom-3 left-3 p-2.5 bg-primary rounded-lg shadow-lg">
-                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="p-5">
-                                <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
-                                    {{ __('messages.solutions.wall') }}
-                                </h3>
-                                <p class="text-sm text-gray-600 leading-relaxed">{{ __('messages.solutions.wall_desc') }}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Ceiling Solutions -->
-                    <div class="swiper-slide">
-                        <div class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 h-full">
-                            <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
-                                <img src="{{ asset('images/acoustic-ceiling-insulation-with-suspended-system.jpg') }}"
-                                     alt="{{ __('messages.solutions.ceiling') }}"
-                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                                <div class="absolute bottom-3 left-3 p-2.5 bg-primary rounded-lg shadow-lg">
-                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="p-5">
-                                <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
-                                    {{ __('messages.solutions.ceiling') }}
-                                </h3>
-                                <p class="text-sm text-gray-600 leading-relaxed">{{ __('messages.solutions.ceiling_desc') }}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Vibration Solutions -->
-                    <div class="swiper-slide">
-                        <div class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 h-full">
-                            <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
-                                <img src="{{ asset('images/industrial-vibration-damping-system-with-rubber-ma.jpg') }}"
-                                     alt="{{ __('messages.solutions.vibration') }}"
-                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                                <div class="absolute bottom-3 left-3 p-2.5 bg-primary rounded-lg shadow-lg">
-                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="p-5">
-                                <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
-                                    {{ __('messages.solutions.vibration') }}
-                                </h3>
-                                <p class="text-sm text-gray-600 leading-relaxed">{{ __('messages.solutions.vibration_desc') }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Navigation -->
-            <div class="flex items-center justify-center gap-2 mt-8">
-                <!-- Previous Button -->
-                <button class="solutions-button-prev w-11 h-11 flex items-center justify-center rounded-full bg-white hover:bg-primary hover:text-white text-gray-900 transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
-                        aria-label="Previous solutions">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-                    </svg>
-                </button>
-
-                <!-- Pagination Dots -->
-                <div class="solutions-pagination flex gap-2 w-auto justify-center"></div>
-
-                <!-- Next Button -->
-                <button class="solutions-button-next w-11 h-11 flex items-center justify-center rounded-full bg-primary hover:bg-primary/90 text-white transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
-                        aria-label="Next solutions">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Products Section with Slider -->
-    <section id="{{ __('messages.slugs.products') }}" class="py-20 bg-white">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <span class="inline-block px-4 py-2 bg-red-100 text-primary rounded-full text-sm font-semibold mb-4">
-                    {{ __('messages.products.badge') }}
-                </span>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                    {{ __('messages.products.title') }}
-                </h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                    {{ __('messages.products.subtitle') }}
-                </p>
-            </div>
-
-            <!-- Products Slider -->
-            <div class="relative" x-data="productsLightbox()" x-on:keydown.escape.window="closeLightbox()">
-                @php
-                    $categories = __('messages.products.categories');
-                @endphp
-
-                <!-- Swiper Container -->
-                <div class="swiper products-swiper max-w-[1216px] mx-auto px-4">
-                    <div class="swiper-wrapper">
-                        @foreach($categories as $index => $category)
-                        <div class="swiper-slide">
-                            <div @click="openLightbox({{ json_encode($category) }})"
-                                 class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 cursor-pointer h-full">
-                                <div class="relative w-full h-[180px] md:h-[200px] lg:h-[220px] overflow-hidden bg-gray-100">
-                                    <img src="{{ asset('images/' . $category['image']) }}"
-                                         alt="{{ $category['name'] }}"
-                                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                                    <!-- Icon Badge -->
-                                    <div class="absolute top-2 left-2 md:top-3 md:left-3">
-                                        <div class="w-10 h-10 md:w-12 md:h-12 bg-white/90 backdrop-blur-sm rounded-lg flex items-center justify-center">
-                                            <svg class="w-5 h-5 md:w-6 md:h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                @if($category['icon'] == 'floor')
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
-                                                @elseif($category['icon'] == 'layers')
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/>
-                                                @elseif($category['icon'] == 'wall')
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                                                @elseif($category['icon'] == 'vibration')
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                                                @elseif($category['icon'] == 'rail')
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
-                                                @else
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                                                @endif
-                                            </svg>
-                                        </div>
-                                    </div>
-
-                                    <!-- Click indicator -->
-                                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <div class="bg-white/20 backdrop-blur-sm rounded-full p-2 md:p-3">
-                                            <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Card Content -->
-                                <div class="p-3 md:p-4">
-                                    <h3 class="text-base md:text-lg font-bold text-gray-900 mb-1 line-clamp-1">
-                                        {{ $category['name'] }}
-                                    </h3>
-                                    <p class="text-xs md:text-sm text-gray-600 line-clamp-2 mb-2 md:mb-3">
-                                        {{ $category['description'] }}
-                                    </p>
-                                    <div class="flex items-center gap-1.5 md:gap-2 text-xs text-gray-500">
-                                        <svg class="w-3.5 h-3.5 md:w-4 md:h-4 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                <!-- Zoom Icon -->
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <div class="bg-white/20 backdrop-blur-sm rounded-full p-2">
+                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
                                         </svg>
-                                        <span class="line-clamp-1">{{ $category['applications'] }}</span>
                                     </div>
                                 </div>
                             </div>
+                            <div class="p-5">
+                                <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+                                    {{ $solution->{'title_' . app()->getLocale()} }}
+                                </h3>
+                                <p class="text-sm text-gray-600 leading-relaxed">{{ $solution->{'description_' . app()->getLocale()} }}</p>
+                            </div>
                         </div>
-                        @endforeach
                     </div>
+                    @endforeach
                 </div>
 
-                <!-- Navigation -->
-                <div class="flex items-center justify-center gap-2 mt-8">
+                <!-- Navigation - Centered Below Slider -->
+                <div class="flex items-center justify-center gap-2 mt-4">
                     <!-- Previous Button -->
-                    <button class="products-button-prev w-11 h-11 flex items-center justify-center rounded-full bg-white hover:bg-primary hover:text-white text-gray-900 transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
-                            aria-label="Previous products">
+                    <button class="solutions-button-prev w-11 h-11 flex items-center justify-center rounded-full bg-white hover:bg-primary hover:text-white text-gray-900 transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
+                            aria-label="Previous solutions">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                         </svg>
                     </button>
 
                     <!-- Pagination Dots -->
-                    <div class="products-pagination flex gap-2 w-auto justify-center"></div>
+                    <div class="solutions-pagination flex gap-2 w-auto justify-center"></div>
 
                     <!-- Next Button -->
-                    <button class="products-button-next w-11 h-11 flex items-center justify-center rounded-full bg-primary hover:bg-primary/90 text-white transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
-                            aria-label="Next products">
+                    <button class="solutions-button-next w-11 h-11 flex items-center justify-center rounded-full bg-primary hover:bg-primary/90 text-white transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
+                            aria-label="Next solutions">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                         </svg>
                     </button>
                 </div>
+
 
                 <!-- Lightbox Modal -->
                 <div x-show="lightboxOpen"
@@ -373,7 +204,7 @@
                          x-transition:leave="transition ease-in duration-200"
                          x-transition:leave-start="opacity-100 scale-100"
                          x-transition:leave-end="opacity-0 scale-95"
-                         class="relative bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden">
+                         class="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
 
                         <!-- Close Button -->
                         <button @click="closeLightbox()"
@@ -386,74 +217,41 @@
                         <div class="grid md:grid-cols-2 gap-0 max-h-[90vh] overflow-y-auto">
                             <!-- Image Side -->
                             <div class="relative aspect-[4/3] md:aspect-auto md:min-h-[500px] bg-gray-100">
-                                <img :src="`{{ asset('images/') }}/${selectedCategory?.image}`"
-                                     :alt="selectedCategory?.name"
-                                     class="w-full h-full object-cover">
-                                <div class="absolute top-4 left-4">
-                                    <div class="w-16 h-16 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
-                                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <template x-if="selectedCategory?.icon == 'floor'">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
-                                            </template>
-                                            <template x-if="selectedCategory?.icon == 'layers'">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/>
-                                            </template>
-                                            <template x-if="selectedCategory?.icon == 'wall'">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                                            </template>
-                                            <template x-if="selectedCategory?.icon == 'vibration'">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                                            </template>
-                                            <template x-if="selectedCategory?.icon == 'rail'">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
-                                            </template>
-                                            <template x-if="selectedCategory?.icon == 'tools'">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                                            </template>
-                                        </svg>
-                                    </div>
+                                <!-- Solution Image -->
+                                <template x-if="selectedSolution && selectedSolution.image">
+                                    <img :src="`{{ asset('') }}${selectedSolution.image}`"
+                                         :alt="selectedSolution.title"
+                                         onerror="this.style.display='none';"
+                                         class="w-full h-full object-cover absolute inset-0">
+                                </template>
+                                <!-- Logo Fallback (always in background) -->
+                                <div class="w-full h-full flex items-center justify-center bg-white p-12">
+                                    <img src="{{ asset('images/nordean-logo.png') }}" alt="NORDEAN Logo" class="max-w-[60%] max-h-[60%] object-contain opacity-40">
                                 </div>
+                                <!-- Icon Badge -->
+                                <template x-if="selectedSolution && selectedSolution.icon">
+                                    <div class="absolute top-4 left-4 z-10">
+                                        <div class="p-2.5 bg-primary rounded-lg shadow-lg">
+                                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" x-html="selectedSolution?.icon">
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </template>
                             </div>
 
                             <!-- Content Side -->
                             <div class="p-8 md:p-10 flex flex-col justify-center">
-                                <div class="mb-6">
+                                <div class="mb-4">
                                     <div class="flex items-center gap-2 mb-4">
                                         <div class="h-1 w-12 bg-primary rounded-full"></div>
                                         <span class="text-sm font-semibold text-primary uppercase tracking-wider">
-                                            {{ __('messages.products.badge') }}
+                                            {{ __('messages.solutions.badge') }}
                                         </span>
                                     </div>
                                     <h3 class="text-3xl font-bold text-gray-900 mb-4"
-                                        x-text="selectedCategory?.name"></h3>
+                                        x-text="selectedSolution?.title"></h3>
                                     <p class="text-lg text-gray-600 leading-relaxed"
-                                       x-text="selectedCategory?.description"></p>
-                                </div>
-
-                                <!-- Products List -->
-                                <div class="mb-6 pt-6 border-t border-gray-200">
-                                    <h4 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wider">
-                                        {{ __('messages.products.badge') }}
-                                    </h4>
-                                    <div class="flex flex-wrap gap-2">
-                                        <template x-for="product in selectedCategory?.products" :key="product">
-                                            <span class="inline-block px-3 py-1.5 bg-gray-100 text-gray-700 rounded-full text-sm font-medium"
-                                                  x-text="product"></span>
-                                        </template>
-                                    </div>
-                                </div>
-
-                                <!-- Applications -->
-                                <div class="pt-6 border-t border-gray-200">
-                                    <div class="flex items-center gap-3 text-sm text-gray-500">
-                                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                                        </svg>
-                                        <span>
-                                            <span class="font-semibold text-gray-900">{{ __('messages.solutions.badge') }}:</span>
-                                            <span x-text="selectedCategory?.applications"></span>
-                                        </span>
-                                    </div>
+                                       x-text="selectedSolution?.description"></p>
                                 </div>
                             </div>
                         </div>
@@ -465,12 +263,12 @@
 
     @push('scripts')
     <script>
-    function productsLightbox() {
+    function solutionsLightbox() {
         return {
             lightboxOpen: false,
-            selectedCategory: null,
-            openLightbox(category) {
-                this.selectedCategory = category;
+            selectedSolution: null,
+            openLightbox(solution) {
+                this.selectedSolution = solution;
                 this.lightboxOpen = true;
                 document.body.style.overflow = 'hidden';
             },
@@ -478,11 +276,538 @@
                 this.lightboxOpen = false;
                 document.body.style.overflow = '';
                 setTimeout(() => {
-                    this.selectedCategory = null;
+                    this.selectedSolution = null;
                 }, 300);
             }
         }
     }
+
+    // Initialize Solutions Flickity
+    document.addEventListener('DOMContentLoaded', function() {
+        const solutionsCarousel = document.querySelector('.solutions-carousel');
+        if (solutionsCarousel) {
+            const solutionsCount = solutionsCarousel.querySelectorAll('.carousel-cell').length;
+            const solutionsFlickity = new Flickity(solutionsCarousel, {
+                cellAlign: 'left',
+                contain: true,
+                pageDots: false,
+                prevNextButtons: false,
+                groupCells: true,
+                wrapAround: false,
+                adaptiveHeight: false,
+                watchCSS: false,
+                autoPlay: 4000,
+                pauseAutoPlayOnHover: true,
+                on: {
+                    ready: function() {
+                        const pageCount = this.slides.length;
+                        console.log('Solutions Flickity ready:', solutionsCount, 'cards,', pageCount, 'pages');
+                    }
+                }
+            });
+
+            // Custom navigation buttons
+            const prevButton = document.querySelector('.solutions-button-prev');
+            const nextButton = document.querySelector('.solutions-button-next');
+
+            if (prevButton) {
+                prevButton.addEventListener('click', function() {
+                    solutionsFlickity.previous();
+                });
+            }
+
+            if (nextButton) {
+                nextButton.addEventListener('click', function() {
+                    solutionsFlickity.next();
+                });
+            }
+
+            // Custom pagination dots
+            const paginationContainer = document.querySelector('.solutions-pagination');
+            const navigationContainer = paginationContainer?.parentElement;
+
+            if (paginationContainer) {
+                // Wait for Flickity to be ready and get actual page count
+                setTimeout(() => {
+                    const pageCount = solutionsFlickity.slides.length;
+                    console.log('Creating', pageCount, 'pagination dots for Solutions');
+
+                    // Hide navigation if only 1 page
+                    if (pageCount <= 1) {
+                        if (navigationContainer) {
+                            navigationContainer.style.display = 'none';
+                        }
+                        return;
+                    }
+
+                    // Show navigation if hidden
+                    if (navigationContainer) {
+                        navigationContainer.style.display = 'flex';
+                    }
+
+                    // Create dots based on page count
+                    for (let i = 0; i < pageCount; i++) {
+                        const dot = document.createElement('button');
+                        dot.className = 'w-3 h-3 rounded-full bg-black transition-all';
+
+                        // First bullet is active (expanded) by default
+                        if (i === 0) {
+                            dot.style.width = '40px';
+                            dot.style.borderRadius = '6px';
+                            dot.style.opacity = '1';
+                        } else {
+                            dot.style.width = '12px';
+                            dot.style.borderRadius = '50%';
+                            dot.style.opacity = '0.3';
+                        }
+
+                        dot.setAttribute('aria-label', 'Go to page ' + (i + 1));
+                        dot.addEventListener('click', function() {
+                            solutionsFlickity.select(i);
+                        });
+                        paginationContainer.appendChild(dot);
+                    }
+
+                    // Update dots on slide change
+                    solutionsFlickity.on('change', function(index) {
+                        const dots = paginationContainer.querySelectorAll('button');
+                        dots.forEach((dot, i) => {
+                            if (i === index) {
+                                dot.style.width = '40px';
+                                dot.style.borderRadius = '6px';
+                                dot.style.opacity = '1';
+                            } else {
+                                dot.style.width = '12px';
+                                dot.style.borderRadius = '50%';
+                                dot.style.opacity = '0.3';
+                            }
+                        });
+                    });
+                }, 100);
+            }
+        }
+    });
+    </script>
+    @endpush
+
+    <!-- Product Categories Table Section -->
+    <section id="{{ __('messages.slugs.products') }}" class="py-20 bg-white">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-12">
+                <span class="inline-block px-4 py-2 bg-red-100 text-primary rounded-full text-sm font-semibold mb-4">
+                    {{ app()->getLocale() == 'tr' ? 'Ürün Grupları' : 'Product Groups' }}
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    {{ app()->getLocale() == 'tr' ? 'Kategorilere Göre Ürünler' : 'Products by Category' }}
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    {{ app()->getLocale() == 'tr' ? 'Tüm akustik yalıtım ürünlerimizi kategorilere göre inceleyin' : 'Browse all our acoustic insulation products by category' }}
+                </p>
+            </div>
+
+            <!-- Category Tabs -->
+            <div x-data="{
+                activeTab: {{ $categories->first()->id ?? 1 }},
+                switchTab(tabId) {
+                    this.activeTab = tabId;
+                    // Reinitialize Flickity after tab switch
+                    this.$nextTick(() => {
+                        setTimeout(() => {
+                            if (window.productCarousels && window.productCarousels[tabId]) {
+                                const carousel = window.productCarousels[tabId];
+                                // Destroy and reinitialize to fix layout issues
+                                carousel.destroy();
+
+                                // Reinitialize the carousel
+                                const carouselElement = document.querySelector('.products-carousel-' + tabId);
+                                if (carouselElement) {
+                                    window.initProductCarousel(tabId);
+                                }
+                            }
+                        }, 50);
+                    });
+                }
+            }">
+                <!-- Tab Navigation -->
+                <div class="border-b border-gray-200 mb-8">
+                    <nav class="flex flex-wrap -mb-px justify-center gap-x-8" aria-label="Tabs">
+                        @foreach($categories as $category)
+                        <button
+                            @click="switchTab({{ $category->id }})"
+                            :class="activeTab === {{ $category->id }} ? 'border-primary text-primary' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'"
+                            class="product-tab-btn group inline-flex items-center gap-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors">
+                            @if($category->icon)
+                            <div class="w-5 h-5" :class="activeTab === {{ $category->id }} ? 'text-primary' : 'text-gray-400 group-hover:text-gray-500'">
+                                {!! $category->icon !!}
+                            </div>
+                            @endif
+                            <span>{{ $category->{'name_' . app()->getLocale()} }}</span>
+                        </button>
+                        @endforeach
+                    </nav>
+                </div>
+
+                <!-- Tab Content -->
+                @foreach($categories as $category)
+                <div
+                    x-show="activeTab === {{ $category->id }}"
+                    x-cloak
+                    class="product-tab-content relative"
+                    x-data="categoryLightbox{{ $category->id }}()"
+                    x-on:keydown.escape.window="closeLightbox()">
+
+                    @if($category->products->count() > 0)
+                    <!-- Flickity Carousel -->
+                    <div class="products-carousel-{{ $category->id }} max-w-[1216px] mx-auto mb-6">
+                        @foreach($category->products as $product)
+                        <div class="carousel-cell w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 px-3">
+                                <div @click="openLightbox({{ json_encode([
+                                    'name' => $product->{'name_' . app()->getLocale()},
+                                    'description' => $product->{'description_' . app()->getLocale()},
+                                    'image' => $product->image,
+                                    'pdfs' => $product->pdfs
+                                ]) }})"
+                                     class="product-card group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 cursor-pointer flex flex-col h-full">
+                                    <!-- Product Image - Fixed Height: 230px on desktop, responsive on mobile -->
+                                    <div class="relative w-full h-40 sm:h-48 md:h-52 lg:h-[230px] overflow-hidden bg-gray-100 flex-shrink-0">
+                                        @if($product->image)
+                                        <img src="{{ asset($product->image) }}"
+                                             alt="{{ $product->{'name_' . app()->getLocale()} }}"
+                                             loading="lazy"
+                                             onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+                                             class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500">
+                                        <div class="hidden w-full h-full flex items-center justify-center bg-white p-8">
+                                            <img src="{{ asset('images/nordean-logo.png') }}" alt="NORDEAN Logo" class="max-w-[70%] max-h-[70%] object-contain opacity-40">
+                                        </div>
+                                        @else
+                                        <div class="w-full h-full flex items-center justify-center bg-white p-8">
+                                            <img src="{{ asset('images/nordean-logo.png') }}" alt="NORDEAN Logo" class="max-w-[70%] max-h-[70%] object-contain opacity-40">
+                                        </div>
+                                        @endif
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                                        <!-- Click indicator -->
+                                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <div class="bg-white/20 backdrop-blur-sm rounded-full p-3">
+                                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Card Content -->
+                                    <div class="p-4 flex-grow flex flex-col">
+                                        <h3 class="text-lg font-bold text-gray-900 mb-2 line-clamp-1">
+                                            {{ $product->{'name_' . app()->getLocale()} }}
+                                        </h3>
+                                        <p class="text-sm text-gray-600 line-clamp-3">
+                                            {{ Str::limit($product->{'description_' . app()->getLocale()}, 120) }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <!-- Navigation - Centered Below Slider -->
+                    <div class="flex items-center justify-center gap-2 mt-4">
+                        <!-- Previous Button -->
+                        <button class="products-button-prev-{{ $category->id }} w-11 h-11 flex items-center justify-center rounded-full bg-white hover:bg-primary hover:text-white text-gray-900 transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
+                                aria-label="Previous products">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                            </svg>
+                        </button>
+
+                        <!-- Pagination Dots -->
+                        <div class="products-pagination-{{ $category->id }} flex gap-2 w-auto justify-center"></div>
+
+                        <!-- Next Button -->
+                        <button class="products-button-next-{{ $category->id }} w-11 h-11 flex items-center justify-center rounded-full bg-primary hover:bg-primary/90 text-white transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
+                                aria-label="Next products">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Lightbox Modal -->
+                    <div x-show="lightboxOpen"
+                         x-transition:enter="transition ease-out duration-300"
+                         x-transition:enter-start="opacity-0"
+                         x-transition:enter-end="opacity-100"
+                         x-transition:leave="transition ease-in duration-200"
+                         x-transition:leave-start="opacity-100"
+                         x-transition:leave-end="opacity-0"
+                         class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+                         style="display: none;"
+                         @click="closeLightbox()">
+
+                        <!-- Modal Content -->
+                        <div @click.stop
+                             x-show="lightboxOpen"
+                             x-transition:enter="transition ease-out duration-300"
+                             x-transition:enter-start="opacity-0 scale-95"
+                             x-transition:enter-end="opacity-100 scale-100"
+                             x-transition:leave="transition ease-in duration-200"
+                             x-transition:leave-start="opacity-100 scale-100"
+                             x-transition:leave-end="opacity-0 scale-95"
+                             class="relative bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden">
+
+                            <!-- Close Button -->
+                            <button @click="closeLightbox()"
+                                    class="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-black/70 text-white rounded-full transition-colors">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                </svg>
+                            </button>
+
+                            <div class="grid md:grid-cols-2 gap-0 max-h-[90vh] overflow-y-auto">
+                                <!-- Image Side -->
+                                <div class="relative aspect-[4/3] md:aspect-auto md:min-h-[500px] bg-gray-100">
+                                    <!-- Product Image -->
+                                    <template x-if="selectedProduct && selectedProduct.image">
+                                        <img :src="`{{ asset('') }}${selectedProduct.image}`"
+                                             :alt="selectedProduct.name"
+                                             onerror="this.style.display='none';"
+                                             class="w-full h-full object-cover absolute inset-0">
+                                    </template>
+                                    <!-- Logo Fallback (always in background) -->
+                                    <div class="w-full h-full flex items-center justify-center bg-white p-12">
+                                        <img src="{{ asset('images/nordean-logo.png') }}" alt="NORDEAN Logo" class="max-w-[60%] max-h-[60%] object-contain opacity-40">
+                                    </div>
+                                </div>
+
+                                <!-- Content Side -->
+                                <div class="p-8 md:p-10 flex flex-col justify-center">
+                                    <div class="mb-6">
+                                        <div class="flex items-center gap-2 mb-4">
+                                            <div class="h-1 w-12 bg-primary rounded-full"></div>
+                                            <span class="text-sm font-semibold text-primary uppercase tracking-wider">
+                                                {{ app()->getLocale() == 'tr' ? 'Ürün Detayı' : 'Product Detail' }}
+                                            </span>
+                                        </div>
+                                        <h3 class="text-3xl font-bold text-gray-900 mb-4"
+                                            x-text="selectedProduct?.name"></h3>
+                                        <div class="text-base text-gray-600 leading-relaxed whitespace-pre-wrap"
+                                             x-text="selectedProduct?.description"></div>
+                                    </div>
+
+                                    <!-- Technical Documentation PDFs -->
+                                    <template x-if="selectedProduct?.pdfs && selectedProduct.pdfs.length > 0">
+                                        <div class="pt-6 border-t border-gray-200">
+                                            <h4 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wider">
+                                                {{ app()->getLocale() == 'tr' ? 'Teknik Dökümanlar' : 'Technical Documents' }}
+                                            </h4>
+                                            <div class="space-y-2">
+                                                <template x-for="(pdf, index) in selectedProduct.pdfs" :key="index">
+                                                    <a :href="`/storage/${pdf}`"
+                                                       target="_blank"
+                                                       class="flex items-center gap-3 p-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors group">
+                                                        <svg class="w-5 h-5 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                                                        </svg>
+                                                        <span class="text-sm text-gray-700 group-hover:text-gray-900 font-medium flex-1" x-text="pdf.split('/').pop()"></span>
+                                                        <svg class="w-4 h-4 text-gray-400 group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                                        </svg>
+                                                    </a>
+                                                </template>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @else
+                    <div class="p-12 text-center bg-white rounded-xl shadow-lg border border-gray-200">
+                        <div class="text-gray-400 mb-4">
+                            <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
+                            </svg>
+                        </div>
+                        <p class="text-gray-500">
+                            {{ app()->getLocale() == 'tr' ? 'Bu kategoride henüz ürün bulunmamaktadır.' : 'No products in this category yet.' }}
+                        </p>
+                    </div>
+                    @endif
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    @push('scripts')
+    <script>
+    // Lightbox functions for each category
+    @foreach($categories as $category)
+    function categoryLightbox{{ $category->id }}() {
+        return {
+            lightboxOpen: false,
+            selectedProduct: null,
+            openLightbox(product) {
+                this.selectedProduct = product;
+                this.lightboxOpen = true;
+                document.body.style.overflow = 'hidden';
+            },
+            closeLightbox() {
+                this.lightboxOpen = false;
+                document.body.style.overflow = '';
+                setTimeout(() => {
+                    this.selectedProduct = null;
+                }, 300);
+            }
+        }
+    }
+    @endforeach
+
+    // Initialize Flickity for product carousels
+    window.productCarousels = {};
+    window.productCarouselHandlers = {};
+
+    // Function to initialize a single product carousel
+    window.initProductCarousel = function(categoryId) {
+        const carouselElement = document.querySelector('.products-carousel-' + categoryId);
+        if (!carouselElement) return;
+
+        const productsCount = carouselElement.querySelectorAll('.carousel-cell').length;
+
+        // Initialize Flickity
+        window.productCarousels[categoryId] = new Flickity(carouselElement, {
+            cellAlign: 'left',
+            contain: true,
+            pageDots: false,
+            prevNextButtons: false,
+            groupCells: true,
+            adaptiveHeight: false,
+            watchCSS: false,
+            autoPlay: 4000,
+            pauseAutoPlayOnHover: true,
+            on: {
+                ready: function() {
+                    console.log('Flickity ready for category', categoryId);
+                }
+            }
+        });
+
+        const flickityInstance = window.productCarousels[categoryId];
+
+        // Custom navigation buttons
+        const prevButton = document.querySelector('.products-button-prev-' + categoryId);
+        const nextButton = document.querySelector('.products-button-next-' + categoryId);
+
+        // Remove old event listeners if they exist
+        if (window.productCarouselHandlers[categoryId]) {
+            if (prevButton && window.productCarouselHandlers[categoryId].prev) {
+                prevButton.removeEventListener('click', window.productCarouselHandlers[categoryId].prev);
+            }
+            if (nextButton && window.productCarouselHandlers[categoryId].next) {
+                nextButton.removeEventListener('click', window.productCarouselHandlers[categoryId].next);
+            }
+        }
+
+        // Create new handlers
+        const prevHandler = function() {
+            flickityInstance.previous();
+        };
+        const nextHandler = function() {
+            flickityInstance.next();
+        };
+
+        // Store handlers for cleanup
+        window.productCarouselHandlers[categoryId] = {
+            prev: prevHandler,
+            next: nextHandler
+        };
+
+        if (prevButton) {
+            prevButton.addEventListener('click', prevHandler);
+        }
+
+        if (nextButton) {
+            nextButton.addEventListener('click', nextHandler);
+        }
+
+        // Custom pagination dots
+        const paginationContainer = document.querySelector('.products-pagination-' + categoryId);
+        const navigationContainer = paginationContainer?.parentElement;
+
+        if (paginationContainer) {
+            // Clear existing dots
+            paginationContainer.innerHTML = '';
+
+            // Wait for Flickity to be ready
+            setTimeout(() => {
+                const pageCount = flickityInstance.slides.length;
+                console.log('Category', categoryId + ':', productsCount, 'cards,', pageCount, 'pages');
+
+                // Hide navigation if only 1 page
+                if (pageCount <= 1) {
+                    if (navigationContainer) {
+                        navigationContainer.style.display = 'none';
+                    }
+                    return;
+                }
+
+                // Show navigation if hidden
+                if (navigationContainer) {
+                    navigationContainer.style.display = 'flex';
+                }
+
+                // Create dots based on page count (not card count)
+                for (let i = 0; i < pageCount; i++) {
+                    const dot = document.createElement('button');
+                    dot.className = 'w-3 h-3 rounded-full bg-black transition-all';
+
+                    // First bullet is active (expanded) by default
+                    if (i === 0) {
+                        dot.style.width = '40px';
+                        dot.style.borderRadius = '6px';
+                        dot.style.opacity = '1';
+                    } else {
+                        dot.style.width = '12px';
+                        dot.style.borderRadius = '50%';
+                        dot.style.opacity = '0.3';
+                    }
+
+                    dot.setAttribute('aria-label', 'Go to page ' + (i + 1));
+                    dot.addEventListener('click', function() {
+                        flickityInstance.select(i);
+                    });
+                    paginationContainer.appendChild(dot);
+                }
+
+                // Update dots on slide change
+                flickityInstance.on('change', function(index) {
+                    const dots = paginationContainer.querySelectorAll('button');
+                    dots.forEach((dot, i) => {
+                        if (i === index) {
+                            dot.style.width = '40px';
+                            dot.style.borderRadius = '6px';
+                            dot.style.opacity = '1';
+                        } else {
+                            dot.style.width = '12px';
+                            dot.style.borderRadius = '50%';
+                            dot.style.opacity = '0.3';
+                        }
+                    });
+                });
+            }, 100);
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize all Flickity carousels
+        setTimeout(() => {
+            @foreach($categories as $category)
+            window.initProductCarousel({{ $category->id }});
+            @endforeach
+        }, 500);
+    });
     </script>
     @endpush
 
@@ -624,7 +949,7 @@
                     <!-- Map -->
                     <div class="bg-white rounded-2xl shadow-lg overflow-hidden h-80">
                         <iframe
-                            src="https://maps.google.com/maps?q=Yeşilkent+Mah.+Ardıçlı+Manolya+Cad.+Ardıçlı+Göl+Evleri+No:28/6+İç+Kapı+No:1,+Avcılar,+İstanbul&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                            src="{{ $settings['contact_map_url'] ?? '' }}"
                             width="100%"
                             height="100%"
                             style="border:0;"
@@ -648,9 +973,7 @@
                                 <div>
                                     <h4 class="font-semibold text-gray-900 mb-1">{{ __('messages.contact.address') }}</h4>
                                     <p class="text-sm text-gray-600">
-                                        Yeşilkent Mah. Ardıçlı Manolya Cad.<br>
-                                        Ardıçlı Göl Evleri No:28/6 İç Kapı No:1<br>
-                                        Avcılar, İstanbul
+                                        {{ $settings['address_' . app()->getLocale()] ?? '' }}
                                     </p>
                                 </div>
                             </div>
@@ -666,8 +989,8 @@
                                 </div>
                                 <div>
                                     <h4 class="font-semibold text-gray-900 mb-1">{{ __('messages.contact.phone_title') }}</h4>
-                                    <a href="tel:+905326421443" class="text-sm text-primary hover:underline">
-                                        +90 532 642 14 43
+                                    <a href="tel:{{ $settings['phone'] ?? '' }}" class="text-sm text-primary hover:underline">
+                                        {{ $settings['phone_display'] ?? '' }}
                                     </a>
                                 </div>
                             </div>
@@ -683,8 +1006,8 @@
                                 </div>
                                 <div>
                                     <h4 class="font-semibold text-gray-900 mb-1">{{ __('messages.contact.email_title') }}</h4>
-                                    <a href="mailto:info@nordean.com.tr" class="text-sm text-primary hover:underline">
-                                        info@nordean.com.tr
+                                    <a href="mailto:{{ $settings['email'] ?? '' }}" class="text-sm text-primary hover:underline">
+                                        {{ $settings['email'] ?? '' }}
                                     </a>
                                 </div>
                             </div>
@@ -699,10 +1022,10 @@
     <section class="py-20 bg-primary text-white">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">
-                {{ __('messages.cta.title') }}
+                {{ $pageContents['cta']->{'title_' . app()->getLocale()} ?? '' }}
             </h2>
             <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                {{ __('messages.cta.description') }}
+                {{ $pageContents['cta']->{'content_' . app()->getLocale()} ?? '' }}
             </p>
             <a href="#{{ __('messages.slugs.contact') }}" class="nav-link inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-white/90 transition-all shadow-lg hover:shadow-xl">
                 {{ __('messages.cta.button') }}
@@ -828,5 +1151,128 @@ function contactForm() {
         }
     }
 }
+
+// Structured Data (Schema.org) for SEO
+const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+        // Organization
+        {
+            "@type": "Organization",
+            "@id": "{{ url('/') }}#organization",
+            "name": "{{ $settings['company_name_full'] ?? 'NORDEAN Mühendislik' }}",
+            "url": "{{ url('/') }}",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{{ asset('images/nordean-logo.png') }}",
+                "width": "250",
+                "height": "60"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "{{ $settings['phone'] ?? '+905326421443' }}",
+                "contactType": "customer service",
+                "areaServed": "TR",
+                "availableLanguage": ["Turkish", "English"]
+            },
+            "sameAs": [
+                "{{ $settings['facebook_url'] ?? '' }}",
+                "{{ $settings['instagram_url'] ?? '' }}",
+                "{{ $settings['linkedin_url'] ?? '' }}"
+            ],
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "{{ $settings['address_tr'] ?? '' }}",
+                "addressLocality": "İstanbul",
+                "addressRegion": "İstanbul",
+                "addressCountry": "TR"
+            }
+        },
+        // LocalBusiness
+        {
+            "@type": "LocalBusiness",
+            "@id": "{{ url('/') }}#localbusiness",
+            "name": "{{ $settings['company_name_full'] ?? 'NORDEAN Mühendislik' }}",
+            "image": "{{ asset('images/nordean-logo.png') }}",
+            "description": "{{ $description ?? 'İtalyan Isolgomma ses ve titreşim yalıtım malzemelerinin Türkiye\'deki tek yetkili distribütörü.' }}",
+            "url": "{{ url('/') }}",
+            "telephone": "{{ $settings['phone'] ?? '+905326421443' }}",
+            "email": "{{ $settings['email'] ?? 'info@nordean.com.tr' }}",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "{{ $settings['address_tr'] ?? '' }}",
+                "addressLocality": "İstanbul",
+                "addressRegion": "İstanbul",
+                "postalCode": "34307",
+                "addressCountry": "TR"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "40.9925",
+                "longitude": "28.7264"
+            },
+            "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "09:00",
+                "closes": "18:00"
+            }
+        },
+        // WebSite
+        {
+            "@type": "WebSite",
+            "@id": "{{ url('/') }}#website",
+            "url": "{{ url('/') }}",
+            "name": "{{ $settings['company_name_full'] ?? 'NORDEAN Mühendislik' }}",
+            "description": "{{ $description }}",
+            "publisher": {
+                "@id": "{{ url('/') }}#organization"
+            },
+            "inLanguage": ["tr", "en"]
+        }
+        @if(isset($products) && $products->count() > 0)
+        ,
+        // Product Catalog
+        {
+            "@type": "ItemList",
+            "itemListElement": [
+                @foreach($products->take(10) as $index => $product)
+                {
+                    "@type": "ListItem",
+                    "position": {{ $index + 1 }},
+                    "item": {
+                        "@type": "Product",
+                        "name": "{{ $product->{'name_' . app()->getLocale()} }} - Isolgomma",
+                        "description": "{{ Str::limit($product->{'description_' . app()->getLocale()}, 150) }}",
+                        "brand": {
+                            "@type": "Brand",
+                            "name": "Isolgomma"
+                        },
+                        "manufacturer": {
+                            "@type": "Organization",
+                            "name": "Isolgomma"
+                        },
+                        "image": "{{ asset($product->image) }}",
+                        "offers": {
+                            "@type": "Offer",
+                            "availability": "https://schema.org/InStock",
+                            "seller": {
+                                "@id": "{{ url('/') }}#organization"
+                            }
+                        }
+                    }
+                }{{ $loop->last ? '' : ',' }}
+                @endforeach
+            ]
+        }
+        @endif
+    ]
+};
+
+// Inject structured data into page
+const script = document.createElement('script');
+script.type = 'application/ld+json';
+script.text = JSON.stringify(structuredData);
+document.head.appendChild(script);
 </script>
 @endpush

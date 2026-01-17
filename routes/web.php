@@ -29,3 +29,30 @@ Route::post('/contact', [ContactController::class, 'send'])->name('contact.send'
 
 // Sitemap
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+
+// Admin Routes
+Route::prefix('panel')->name('admin.')->group(function () {
+    // Auth routes (publicly accessible)
+    Route::get('/login', [App\Http\Controllers\Admin\AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [App\Http\Controllers\Admin\AuthController::class, 'login']);
+
+    // Protected admin routes
+    Route::middleware(['auth', App\Http\Middleware\AdminMiddleware::class])->group(function () {
+        Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/visitor-map-data', [App\Http\Controllers\Admin\DashboardController::class, 'getVisitorMapData'])->name('dashboard.visitor-map');
+        Route::post('/logout', [App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('logout');
+
+        // Content Management
+        Route::resource('categories', App\Http\Controllers\Admin\CategoryController::class);
+        Route::resource('sliders', App\Http\Controllers\Admin\SliderController::class);
+        Route::post('sliders/{slider}/update-order', [App\Http\Controllers\Admin\SliderController::class, 'updateOrder'])->name('sliders.update-order');
+        Route::resource('products', App\Http\Controllers\Admin\ProductController::class);
+        Route::delete('products/{product}/pdfs/{index}', [App\Http\Controllers\Admin\ProductController::class, 'deletePdf'])->name('products.delete-pdf');
+        Route::resource('solutions', App\Http\Controllers\Admin\SolutionController::class);
+        Route::resource('references', App\Http\Controllers\Admin\ReferenceController::class);
+        Route::resource('pages', App\Http\Controllers\Admin\PageContentController::class)->only(['index', 'edit', 'update']);
+        Route::get('settings', [App\Http\Controllers\Admin\SettingController::class, 'index'])->name('settings.index');
+        Route::post('settings', [App\Http\Controllers\Admin\SettingController::class, 'update'])->name('settings.update');
+        Route::resource('messages', App\Http\Controllers\Admin\ContactMessageController::class)->only(['index', 'show', 'destroy']);
+    });
+});

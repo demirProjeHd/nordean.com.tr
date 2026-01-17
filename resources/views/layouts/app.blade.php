@@ -6,8 +6,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ $title ?? 'NORDEAN - Isolgomma Türkiye Distribütörü | Ses ve Titreşim Yalıtımı' }}</title>
-    <meta name="description" content="{{ $description ?? 'İtalyan Isolgomma ses ve titreşim yalıtım malzemelerinin Türkiye\'deki tek yetkili ithalatçısı ve distribütörü. Zemin, duvar, tavan yalıtımı ve titreşim kontrolü çözümleri.' }}">
-    <meta name="keywords" content="ses yalıtımı, titreşim yalıtımı, akustik malzeme, isolgomma, nordean, zemin yalıtımı, duvar yalıtımı, tavan yalıtımı, yapı malzemeleri, sound insulation, vibration control">
+    <meta name="description" content="{{ $description ?? 'İtalyan Isolgomma ses ve titreşim yalıtım malzemelerinin Türkiye\'deki tek yetkili distribütörü. Zemin, duvar, tavan yalıtımı ve titreşim kontrolü çözümleri.' }}">
+    <meta name="keywords" content="{{ $keywords ?? 'isolgomma türkiye, isolgomma distribütör, ses yalıtımı, titreşim yalıtımı, akustik malzeme, nordean, zemin yalıtımı, duvar yalıtımı, tavan yalıtımı, bifloor, sylomer, isolgomma ürünleri, sound insulation, vibration control' }}">
     <meta name="author" content="NORDEAN Mühendislik">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="{{ url()->current() }}">
@@ -16,17 +16,21 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="{{ $title ?? 'NORDEAN - Isolgomma Türkiye Distribütörü | Ses ve Titreşim Yalıtımı' }}">
-    <meta property="og:description" content="{{ $description ?? 'İtalyan Isolgomma ses ve titreşim yalıtım malzemelerinin Türkiye\'deki tek yetkili ithalatçısı ve distribütörü.' }}">
+    <meta property="og:description" content="{{ $description ?? 'İtalyan Isolgomma ses ve titreşim yalıtım malzemelerinin Türkiye\'deki tek yetkili distribütörü. Bifloor, Sylomer, Roll, Point ürünleri.' }}">
     <meta property="og:image" content="{{ asset('images/nordean-logo.png') }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:locale" content="{{ app()->getLocale() == 'tr' ? 'tr_TR' : 'en_US' }}">
-    <meta property="og:site_name" content="NORDEAN Mühendislik">
+    <meta property="og:locale:alternate" content="{{ app()->getLocale() == 'tr' ? 'en_US' : 'tr_TR' }}">
+    <meta property="og:site_name" content="NORDEAN - Isolgomma Türkiye">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="{{ url()->current() }}">
     <meta name="twitter:title" content="{{ $title ?? 'NORDEAN - Isolgomma Türkiye Distribütörü | Ses ve Titreşim Yalıtımı' }}">
-    <meta name="twitter:description" content="{{ $description ?? 'İtalyan Isolgomma ses ve titreşim yalıtım malzemelerinin Türkiye\'deki tek yetkili ithalatçısı ve distribütörü.' }}">
+    <meta name="twitter:description" content="{{ $description ?? 'İtalyan Isolgomma ses ve titreşim yalıtım malzemelerinin Türkiye\'deki tek yetkili distribütörü. Bifloor, Sylomer, Roll, Point ürünleri.' }}">
     <meta name="twitter:image" content="{{ asset('images/nordean-logo.png') }}">
+    <meta name="twitter:image:alt" content="NORDEAN - Isolgomma Türkiye Distribütörü Logo">
 
     <!-- Alternate Language Links (hreflang) -->
     <link rel="alternate" hreflang="tr" href="{{ url('/tr' . (request()->getPathInfo() === '/' ? '' : request()->getPathInfo())) }}" />
@@ -108,6 +112,9 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endif
 
+    <!-- Flickity CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
     @stack('styles')
 </head>
 <body class="antialiased bg-white text-gray-900">
@@ -121,6 +128,9 @@
 
     <!-- Footer -->
     @include('partials.footer')
+
+    <!-- Flickity JS -->
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
     @stack('scripts')
 
