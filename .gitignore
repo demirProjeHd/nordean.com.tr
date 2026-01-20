@@ -1,14 +1,84 @@
+# Dependencies
 /node_modules
+/vendor
+
+# Laravel
 /public/hot
 /public/storage
 /storage/*.key
-/vendor
+
+# Environment files
 .env
 .env.backup
+.env.production
+
+# Testing
 .phpunit.result.cache
-Homestead.json
-Homestead.yaml
+phpunit.xml
+coverage/
+
+# Build files
+/public/build
+/public/mix-manifest.json
 npm-debug.log
 yarn-error.log
+
+# IDE
 /.idea
 /.vscode
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Laravel Storage (keep structure, ignore content)
+/storage/framework/cache/*
+!/storage/framework/cache/.gitkeep
+/storage/framework/sessions/*
+!/storage/framework/sessions/.gitkeep
+/storage/framework/views/*
+!/storage/framework/views/.gitkeep
+/storage/logs/*
+!/storage/logs/.gitkeep
+/storage/app/*
+!/storage/app/.gitkeep
+!/storage/app/public
+
+# Bootstrap Cache
+/bootstrap/cache/*
+!/bootstrap/cache/.gitkeep
+*.tmp
+
+# Homestead
+Homestead.json
+Homestead.yaml
+auth.json
+
+# Project Specific
+# Design reference files
+hr-system-design/
+hr-system-design.zip
+
+# Test files
+test_mail.php
+test_mail_port25.php
+test_mail_relay.php
+
+# Documentation screenshots (optional - commit if needed for docs)
+docs/*.png
+docs/*.jpg
+docs/*.jpeg
+docs/*.gif
+
+# Database dumps (except migrations)
+database/*.sql
+!database/migrations/
+!database/seeders/
+
+# Temporary files
+*.log
+*.bak
+*.cache

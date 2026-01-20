@@ -78,46 +78,11 @@
 function heroSlider() {
     return {
         currentSlide: 0,
-        slides: [
-            {
-                image: '<?php echo e(asset("images/modern-recording-studio-with-acoustic-foam-panels-.jpg")); ?>',
-                titleKey: 'slide1',
-                subtitleKey: 'slide1'
-            },
-            {
-                image: '<?php echo e(asset("images/acoustic-floating-floor-installation-with-insulati.jpg")); ?>',
-                titleKey: 'slide2',
-                subtitleKey: 'slide2'
-            },
-            {
-                image: '<?php echo e(asset("images/soundproof-wall-with-acoustic-panels-installation.jpg")); ?>',
-                titleKey: 'slide3',
-                subtitleKey: 'slide3'
-            },
-            {
-                image: '<?php echo e(asset("images/acoustic-ceiling-insulation-with-suspended-system.jpg")); ?>',
-                titleKey: 'slide4',
-                subtitleKey: 'slide4'
-            }
-        ],
-        translations: <?php echo json_encode([
-            'slide1' => [
-                'title' => __('messages.hero.slide1.title'),
-                'subtitle' => __('messages.hero.slide1.subtitle')
-            ],
-            'slide2' => [
-                'title' => __('messages.hero.slide2.title'),
-                'subtitle' => __('messages.hero.slide2.subtitle')
-            ],
-            'slide3' => [
-                'title' => __('messages.hero.slide3.title'),
-                'subtitle' => __('messages.hero.slide3.subtitle')
-            ],
-            'slide4' => [
-                'title' => __('messages.hero.slide4.title'),
-                'subtitle' => __('messages.hero.slide4.subtitle')
-            ]
-        ]); ?>,
+        slides: <?php echo json_encode($sliders->map(function($slider) {
+            return [
+                'image' => asset($slider->background_image), 'title' => $slider->{"title_" . app()->getLocale()}, 'subtitle' => $slider->{"subtitle_" . app()->getLocale()}
+            ];
+        })) ?>,
         init() {
             setInterval(() => {
                 this.nextSlide();
@@ -133,8 +98,7 @@ function heroSlider() {
             this.currentSlide = index;
         },
         getCurrentSlideText(type) {
-            const slideKey = this.slides[this.currentSlide].titleKey;
-            return this.translations[slideKey][type];
+            return this.slides[this.currentSlide][type];
         }
     }
 }

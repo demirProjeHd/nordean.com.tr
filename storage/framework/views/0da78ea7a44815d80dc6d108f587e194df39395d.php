@@ -19,27 +19,34 @@
 
         <!-- References Slider -->
         <div class="relative" x-data="referencesLightbox()" x-on:keydown.escape.window="closeLightbox()">
-            <?php
-                $projects = __('messages.references.projects');
-            ?>
-
-            <!-- Swiper Container -->
-            <div class="swiper references-swiper max-w-[1216px] mx-auto px-4">
-                <div class="swiper-wrapper">
-                    <?php $__currentLoopData = $projects; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $project): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <div class="swiper-slide">
-                        <div @click="openLightbox(<?php echo e(json_encode($project)); ?>)"
-                             class="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 w-full cursor-pointer h-full">
+            <!-- Flickity Container -->
+            <div class="references-carousel max-w-[1216px] mx-auto px-4 mb-6">
+                <?php
+                    // Group references by 8 (2 rows x 4 columns on desktop)
+                    $chunked = $references->chunk(8);
+                ?>
+                <?php $__currentLoopData = $chunked; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $chunk): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <div class="carousel-cell w-full px-2">
+                    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-2 gap-3">
+                        <?php $__currentLoopData = $chunk; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $reference): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div @click="openLightbox(<?php echo e(json_encode([
+                            'name' => $reference->{'name_' . app()->getLocale()},
+                            'description' => $reference->{'description_' . app()->getLocale()},
+                            'category' => $reference->{'category_' . app()->getLocale()},
+                            'image' => $reference->image
+                        ])); ?>)"
+                             class="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 cursor-pointer h-36 lg:h-40">
                             <div class="relative w-full h-full overflow-hidden bg-gray-100">
-                                <img src="<?php echo e(asset('images/references/' . $project['image'])); ?>"
-                                     alt="<?php echo e($project['name']); ?>"
+                                <img src="<?php echo e(asset($reference->image)); ?>"
+                                     alt="<?php echo e($reference->{'name_' . app()->getLocale()}); ?>"
+                                     loading="lazy"
                                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                                 <!-- Category Badge -->
                                 <div class="absolute top-2 right-2">
                                     <span class="inline-block px-2 py-1 bg-primary/90 backdrop-blur-sm text-white rounded-full text-xs font-semibold">
-                                        <?php echo e($project['category']); ?>
+                                        <?php echo e($reference->{'category_' . app()->getLocale()}); ?>
 
                                     </span>
                                 </div>
@@ -47,11 +54,11 @@
                                 <!-- Project Info on Hover -->
                                 <div class="absolute inset-0 p-3 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     <h3 class="text-white font-bold text-xs mb-0.5 leading-tight line-clamp-2">
-                                        <?php echo e($project['name']); ?>
+                                        <?php echo e($reference->{'name_' . app()->getLocale()}); ?>
 
                                     </h3>
                                     <p class="text-white/90 text-[10px] leading-tight line-clamp-2">
-                                        <?php echo e($project['description']); ?>
+                                        <?php echo e($reference->{'description_' . app()->getLocale()}); ?>
 
                                     </p>
                                 </div>
@@ -66,13 +73,14 @@
                                 </div>
                             </div>
                         </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
 
-            <!-- Navigation -->
-            <div class="flex items-center justify-center gap-2 mt-8">
+            <!-- Navigation - Centered Below Slider -->
+            <div class="flex items-center justify-center gap-2 mt-4">
                 <!-- Previous Button -->
                 <button class="references-button-prev w-11 h-11 flex items-center justify-center rounded-full bg-white hover:bg-primary hover:text-white text-gray-900 transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
                         aria-label="Previous references">
@@ -127,13 +135,24 @@
                     <div class="grid md:grid-cols-2 gap-0 max-h-[90vh] overflow-y-auto">
                         <!-- Image Side -->
                         <div class="relative aspect-[4/3] md:aspect-auto md:min-h-[500px] bg-gray-100">
-                            <img :src="`<?php echo e(asset('images/references/')); ?>/${selectedProject?.image}`"
-                                 :alt="selectedProject?.name"
-                                 class="w-full h-full object-cover">
-                            <div class="absolute top-4 left-4">
-                                <span class="inline-block px-3 py-1.5 bg-primary text-white rounded-full text-sm font-semibold"
-                                      x-text="selectedProject?.category"></span>
+                            <!-- Reference Image -->
+                            <template x-if="selectedProject && selectedProject.image">
+                                <img :src="`<?php echo e(asset('')); ?>${selectedProject.image}`"
+                                     :alt="selectedProject.name"
+                                     onerror="this.style.display='none';"
+                                     class="w-full h-full object-cover absolute inset-0">
+                            </template>
+                            <!-- Logo Fallback (always in background) -->
+                            <div class="w-full h-full flex items-center justify-center bg-white p-12">
+                                <img src="<?php echo e(asset('images/nordean-logo.png')); ?>" alt="NORDEAN Logo" class="max-w-[60%] max-h-[60%] object-contain opacity-40">
                             </div>
+                            <!-- Category Badge -->
+                            <template x-if="selectedProject && selectedProject.category">
+                                <div class="absolute top-4 left-4 z-10">
+                                    <span class="inline-block px-3 py-1.5 bg-primary text-white rounded-full text-sm font-semibold"
+                                          x-text="selectedProject?.category"></span>
+                                </div>
+                            </template>
                         </div>
 
                         <!-- Content Side -->
@@ -192,6 +211,106 @@ function referencesLightbox() {
         }
     }
 }
+
+// Initialize References Flickity
+document.addEventListener('DOMContentLoaded', function() {
+    const referencesCarousel = document.querySelector('.references-carousel');
+    if (referencesCarousel) {
+        const referencesCount = referencesCarousel.querySelectorAll('.carousel-cell').length;
+        const referencesFlickity = new Flickity(referencesCarousel, {
+            cellAlign: 'left',
+            contain: true,
+            pageDots: false,
+            prevNextButtons: false,
+            groupCells: false,
+            wrapAround: false,
+            adaptiveHeight: false,
+            watchCSS: false,
+            autoPlay: 4000,
+            pauseAutoPlayOnHover: true,
+        });
+
+        // Custom navigation buttons
+        const prevButton = document.querySelector('.references-button-prev');
+        const nextButton = document.querySelector('.references-button-next');
+
+        if (prevButton) {
+            prevButton.addEventListener('click', function() {
+                referencesFlickity.previous();
+            });
+        }
+
+        if (nextButton) {
+            nextButton.addEventListener('click', function() {
+                referencesFlickity.next();
+            });
+        }
+
+        // Custom pagination dots
+        const paginationContainer = document.querySelector('.references-pagination');
+        const navigationContainer = paginationContainer?.parentElement;
+
+        if (paginationContainer) {
+            // Wait for Flickity to be ready
+            setTimeout(() => {
+                const pageCount = referencesFlickity.slides.length;
+                console.log('References:', referencesCount, 'cards,', pageCount, 'pages');
+
+                // Hide navigation if only 1 page
+                if (pageCount <= 1) {
+                    if (navigationContainer) {
+                        navigationContainer.style.display = 'none';
+                    }
+                    return;
+                }
+
+                // Show navigation if hidden
+                if (navigationContainer) {
+                    navigationContainer.style.display = 'flex';
+                }
+
+                // Create dots based on page count (not card count)
+                for (let i = 0; i < pageCount; i++) {
+                    const dot = document.createElement('button');
+                    dot.className = 'w-3 h-3 rounded-full bg-black transition-all';
+
+                    // First bullet is active (expanded) by default
+                    if (i === 0) {
+                        dot.style.width = '40px';
+                        dot.style.borderRadius = '6px';
+                        dot.style.opacity = '1';
+                    } else {
+                        dot.style.width = '12px';
+                        dot.style.borderRadius = '50%';
+                        dot.style.opacity = '0.3';
+                    }
+
+                    dot.setAttribute('aria-label', 'Go to page ' + (i + 1));
+                    dot.addEventListener('click', function() {
+                        referencesFlickity.select(i);
+                    });
+                    paginationContainer.appendChild(dot);
+                }
+
+                // Update dots on slide change
+                referencesFlickity.on('change', function(index) {
+                    const dots = paginationContainer.querySelectorAll('button');
+                    dots.forEach((dot, i) => {
+                        if (i === index) {
+                            dot.style.width = '40px';
+                            dot.style.borderRadius = '6px';
+                            dot.style.opacity = '1';
+                        } else {
+                            dot.style.width = '12px';
+                            dot.style.borderRadius = '50%';
+                            dot.style.opacity = '0.3';
+                        }
+                    });
+                });
+            }, 100);
+        }
+    }
+});
 </script>
 <?php $__env->stopPush(); ?>
 <?php /**PATH C:\xampp\htdocs\nordean.com.tr\resources\views/partials/references.blade.php ENDPATH**/ ?>
