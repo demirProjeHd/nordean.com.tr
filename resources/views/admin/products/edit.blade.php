@@ -98,12 +98,16 @@
             <div class="mb-3">
                 <label class="form-label">Ana Resim</label>
                 @if($product->image)
-                <div class="mb-2">
-                    <img src="{{ asset($product->image) }}" alt="" style="max-height: 100px;">
+                <div class="mb-2 d-flex align-items-center gap-2">
+                    <img src="{{ asset($product->image) }}" alt="{{ $product->name_tr }}" style="max-height: 100px; border-radius: 4px;">
+                    <button type="button" class="btn btn-sm btn-ghost-danger" onclick="if(confirm('Bu resmi silmek istediğinizden emin misiniz?')) { document.getElementById('delete-image-form').submit(); }" title="Resmi Sil">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7l16 0" /><path d="M10 11l0 6" /><path d="M14 11l0 6" /><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /></svg>
+                        Sil
+                    </button>
                 </div>
                 @endif
                 <input type="file" name="image" class="form-control">
-                <small class="form-hint">Upload new image to replace current one</small>
+                <small class="form-hint">Yeni resim yükleyin veya mevcut resmi silin</small>
             </div>
 
             <div class="row">
@@ -161,6 +165,15 @@
     </form>
 </div>
 
+{{-- Image delete form --}}
+@if($product->image)
+<form id="delete-image-form" action="{{ route('admin.products.delete-image', $product->id) }}" method="POST" class="d-none">
+    @csrf
+    @method('DELETE')
+</form>
+@endif
+
+{{-- PDF delete forms --}}
 @if($product->pdfs && count($product->pdfs) > 0)
     @foreach($product->pdfs as $index => $pdf)
     <form id="delete-pdf-{{ $index }}" action="{{ route('admin.products.delete-pdf', [$product->id, $index]) }}" method="POST" class="d-none">

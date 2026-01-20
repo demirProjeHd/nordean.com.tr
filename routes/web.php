@@ -48,6 +48,7 @@ Route::prefix('panel')->name('admin.')->group(function () {
         Route::post('sliders/{slider}/update-order', [App\Http\Controllers\Admin\SliderController::class, 'updateOrder'])->name('sliders.update-order');
         Route::resource('products', App\Http\Controllers\Admin\ProductController::class);
         Route::delete('products/{product}/pdfs/{index}', [App\Http\Controllers\Admin\ProductController::class, 'deletePdf'])->name('products.delete-pdf');
+        Route::delete('products/{product}/image', [App\Http\Controllers\Admin\ProductController::class, 'deleteImage'])->name('products.delete-image');
         Route::resource('solutions', App\Http\Controllers\Admin\SolutionController::class);
         Route::resource('references', App\Http\Controllers\Admin\ReferenceController::class);
         Route::resource('pages', App\Http\Controllers\Admin\PageContentController::class)->only(['index', 'edit', 'update']);

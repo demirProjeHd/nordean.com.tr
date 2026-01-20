@@ -170,4 +170,22 @@ class ProductController extends Controller
 
         return redirect()->back()->with('error', 'PDF not found!');
     }
+
+    public function deleteImage(Product $product)
+    {
+        if ($product->image) {
+            // Delete file from public directory
+            $imagePath = public_path($product->image);
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+
+            // Update product - remove image
+            $product->update(['image' => null]);
+
+            return redirect()->back()->with('success', 'Image deleted successfully!');
+        }
+
+        return redirect()->back()->with('error', 'No image to delete!');
+    }
 }
