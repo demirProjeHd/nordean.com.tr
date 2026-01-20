@@ -56,3 +56,16 @@ Route::prefix('panel')->name('admin.')->group(function () {
         Route::resource('messages', App\Http\Controllers\Admin\ContactMessageController::class)->only(['index', 'show', 'destroy']);
     });
 });
+
+// Error Page Testing Routes (Only in development)
+if (config('app.debug')) {
+    Route::prefix('test-error')->name('test.error.')->group(function () {
+        Route::get('/401', fn() => abort(401))->name('401');
+        Route::get('/403', fn() => abort(403))->name('403');
+        Route::get('/404', fn() => abort(404))->name('404');
+        Route::get('/419', fn() => abort(419))->name('419');
+        Route::get('/429', fn() => abort(429))->name('429');
+        Route::get('/500', fn() => abort(500))->name('500');
+        Route::get('/503', fn() => abort(503))->name('503');
+    });
+}

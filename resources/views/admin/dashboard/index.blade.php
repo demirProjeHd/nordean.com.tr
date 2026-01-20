@@ -4,227 +4,226 @@
 
 @section('content')
 <!-- Statistics Cards -->
-<div class="row row-deck row-cards mb-3">
+<div class="row row-deck row-cards mb-4">
     <!-- Sliders -->
-    <div class="col-sm-6 col-lg-4">
-        <div class="card">
+    <div class="col-sm-6 col-md-4 col-lg-2">
+        <div class="card stats-card stats-card-compact">
             <div class="card-body">
-                <div class="d-flex align-items-center">
-                    <div class="subheader">Slaytlar</div>
-                </div>
-                <div class="h1 mb-3">{{ $stats['sliders'] }}</div>
-                <div class="d-flex mb-2">
-                    <div class="ms-auto">
-                        <a href="{{ route('admin.sliders.index') }}" class="text-decoration-none">
-                            Yönet →
-                        </a>
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="stats-icon-large primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /></svg>
+                    </div>
+                    <div class="text-end">
+                        <div class="stats-value-compact">{{ $stats['sliders'] }}</div>
                     </div>
                 </div>
+                <div class="stats-label-compact">Slaytlar</div>
+                <a href="{{ route('admin.sliders.index') }}" class="stats-link-compact">Yönet →</a>
             </div>
         </div>
     </div>
 
     <!-- Products -->
-    <div class="col-sm-6 col-lg-4">
-        <div class="card">
+    <div class="col-sm-6 col-md-4 col-lg-2">
+        <div class="card stats-card stats-card-compact">
             <div class="card-body">
-                <div class="d-flex align-items-center">
-                    <div class="subheader">Ürünler</div>
-                </div>
-                <div class="h1 mb-3">{{ $stats['products'] }}</div>
-                <div class="d-flex mb-2">
-                    <div class="ms-auto">
-                        <a href="{{ route('admin.products.index') }}" class="text-decoration-none">
-                            Yönet →
-                        </a>
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="stats-icon-large success">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12l0 9" /><path d="M12 12l-8 -4.5" /></svg>
+                    </div>
+                    <div class="text-end">
+                        <div class="stats-value-compact">{{ $stats['products'] }}</div>
                     </div>
                 </div>
+                <div class="stats-label-compact">Ürünler</div>
+                <a href="{{ route('admin.products.index') }}" class="stats-link-compact">Yönet →</a>
             </div>
         </div>
     </div>
 
     <!-- Solutions -->
-    <div class="col-sm-6 col-lg-4">
-        <div class="card">
+    <div class="col-sm-6 col-md-4 col-lg-2">
+        <div class="card stats-card stats-card-compact">
             <div class="card-body">
-                <div class="d-flex align-items-center">
-                    <div class="subheader">Çözümler</div>
-                </div>
-                <div class="h1 mb-3">{{ $stats['solutions'] }}</div>
-                <div class="d-flex mb-2">
-                    <div class="ms-auto">
-                        <a href="{{ route('admin.solutions.index') }}" class="text-decoration-none">
-                            Yönet →
-                        </a>
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="stats-icon-large warning">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7" /><path d="M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3" /><path d="M9.7 17l4.6 0" /></svg>
+                    </div>
+                    <div class="text-end">
+                        <div class="stats-value-compact">{{ $stats['solutions'] }}</div>
                     </div>
                 </div>
+                <div class="stats-label-compact">Çözümler</div>
+                <a href="{{ route('admin.solutions.index') }}" class="stats-link-compact">Yönet →</a>
             </div>
         </div>
     </div>
 
     <!-- References -->
-    <div class="col-sm-6 col-lg-4">
-        <div class="card">
+    <div class="col-sm-6 col-md-4 col-lg-2">
+        <div class="card stats-card stats-card-compact">
             <div class="card-body">
-                <div class="d-flex align-items-center">
-                    <div class="subheader">Referanslar</div>
-                </div>
-                <div class="h1 mb-3">{{ $stats['references'] }}</div>
-                <div class="d-flex mb-2">
-                    <div class="ms-auto">
-                        <a href="{{ route('admin.references.index') }}" class="text-decoration-none">
-                            Yönet →
-                        </a>
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="stats-icon-large info">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 8h.01" /><path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z" /><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" /><path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" /></svg>
+                    </div>
+                    <div class="text-end">
+                        <div class="stats-value-compact">{{ $stats['references'] }}</div>
                     </div>
                 </div>
+                <div class="stats-label-compact">Referanslar</div>
+                <a href="{{ route('admin.references.index') }}" class="stats-link-compact">Yönet →</a>
             </div>
         </div>
     </div>
 
     <!-- Total Messages -->
-    <div class="col-sm-6 col-lg-4">
-        <div class="card">
+    <div class="col-sm-6 col-md-4 col-lg-2">
+        <div class="card stats-card stats-card-compact">
             <div class="card-body">
-                <div class="d-flex align-items-center">
-                    <div class="subheader">Toplam Mesaj</div>
-                </div>
-                <div class="h1 mb-3">{{ $stats['total_messages'] }}</div>
-                <div class="d-flex mb-2">
-                    <div class="ms-auto">
-                        <a href="{{ route('admin.messages.index') }}" class="text-decoration-none">
-                            Tümünü Gör →
-                        </a>
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="stats-icon-large primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg>
+                    </div>
+                    <div class="text-end">
+                        <div class="stats-value-compact">{{ $stats['total_messages'] }}</div>
                     </div>
                 </div>
+                <div class="stats-label-compact">Mesajlar</div>
+                <a href="{{ route('admin.messages.index') }}" class="stats-link-compact">Tümü →</a>
             </div>
         </div>
     </div>
 
     <!-- Unread Messages -->
-    <div class="col-sm-6 col-lg-4">
-        <div class="card">
+    <div class="col-sm-6 col-md-4 col-lg-2">
+        <div class="card stats-card stats-card-compact">
             <div class="card-body">
-                <div class="d-flex align-items-center">
-                    <div class="subheader">Okunmamış Mesaj</div>
-                </div>
-                <div class="h1 mb-3">
-                    <span class="{{ $stats['unread_messages'] > 0 ? 'text-red' : '' }}">
-                        {{ $stats['unread_messages'] }}
-                    </span>
-                </div>
-                <div class="d-flex mb-2">
-                    <div class="ms-auto">
-                        <a href="{{ route('admin.messages.index') }}" class="text-decoration-none">
-                            Oku →
-                        </a>
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="stats-icon-large {{ $stats['unread_messages'] > 0 ? 'warning' : 'success' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+                    </div>
+                    <div class="text-end">
+                        <div class="stats-value-compact {{ $stats['unread_messages'] > 0 ? 'text-warning' : '' }}">{{ $stats['unread_messages'] }}</div>
                     </div>
                 </div>
+                <div class="stats-label-compact">Okunmamış</div>
+                <a href="{{ route('admin.messages.index') }}" class="stats-link-compact">Oku →</a>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Visitor Map -->
-<div class="row mb-3">
-    <div class="col-12">
-        <div class="card">
+<!-- Visitor Map, Recent Messages & Quick Actions -->
+<div class="row mb-4">
+    <!-- Visitor Map (50% width) -->
+    <div class="col-lg-6 mb-4 mb-lg-0">
+        <div class="card h-100">
             <div class="card-header">
-                <h3 class="card-title">Ziyaretçi Haritası (Son 15 Gün)</h3>
-                <div class="card-subtitle">Toplam Ziyaretçi: <strong>{{ $stats['total_visitors'] }}</strong></div>
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="card-title mb-1">Ziyaretçi Haritası</h3>
+                        <div class="text-muted small">Son 15 Gün - Toplam Ziyaretçi: <strong class="text-primary">{{ $stats['total_visitors'] }}</strong></div>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
                 <canvas id="visitor-map" style="height: 400px;"></canvas>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Recent Messages -->
-@if($recentMessages->count() > 0)
-<div class="row">
-    <div class="col-12">
-        <div class="card">
+    <!-- Recent Messages (25% width) -->
+    <div class="col-lg-3 mb-4 mb-lg-0">
+        @if($recentMessages->count() > 0)
+        <div class="card h-100">
             <div class="card-header">
-                <h3 class="card-title">Son Mesajlar</h3>
+                <div class="d-flex align-items-center justify-content-between">
+                    <h3 class="card-title mb-0">Son Mesajlar</h3>
+                </div>
             </div>
-            <div class="list-group list-group-flush">
-                @foreach($recentMessages as $message)
-                <div class="list-group-item">
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <span class="avatar">{{ substr($message->name, 0, 2) }}</span>
-                        </div>
-                        <div class="col text-truncate">
-                            <a href="{{ route('admin.messages.show', $message->id) }}" class="text-body d-block">
-                                <strong>{{ $message->name }}</strong>
-                                @if(!$message->read)
-                                    <span class="badge bg-red ms-2">Yeni</span>
-                                @endif
-                            </a>
-                            <div class="text-muted text-truncate mt-n1">
-                                {{ $message->subject }} - {{ Str::limit($message->message, 60) }}
+            <div class="card-body p-0" style="max-height: 400px; overflow-y: auto;">
+                <div class="list-group list-group-flush">
+                    @foreach($recentMessages as $message)
+                    <a href="{{ route('admin.messages.show', $message->id) }}" class="list-group-item list-group-item-action">
+                        <div class="d-flex align-items-start gap-2">
+                            <span class="avatar avatar-sm avatar-rounded flex-shrink-0" style="background: var(--primary); color: var(--primary-foreground);">
+                                {{ strtoupper(substr($message->name, 0, 2)) }}
+                            </span>
+                            <div class="flex-fill" style="min-width: 0;">
+                                <div class="d-flex align-items-center gap-1 mb-1">
+                                    <div class="fw-semibold text-truncate small">{{ $message->name }}</div>
+                                    @if(!$message->read)
+                                        <span class="badge bg-danger badge-sm">Yeni</span>
+                                    @endif
+                                </div>
+                                <div class="small text-muted mb-1 fw-medium" style="font-size: 0.75rem;">{{ Str::limit($message->subject, 22) }}</div>
+                                <div class="small text-muted text-truncate" style="font-size: 0.7rem;">
+                                    {{ Str::limit($message->message, 35) }}
+                                </div>
+                                <div class="small text-muted mt-1" style="font-size: 0.65rem;">
+                                    {{ $message->created_at->diffForHumans() }}
+                                </div>
                             </div>
                         </div>
-                        <div class="col-auto">
-                            <div class="text-muted">{{ $message->created_at->diffForHumans() }}</div>
-                        </div>
-                    </div>
+                    </a>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
-            <div class="card-footer text-center">
-                <a href="{{ route('admin.messages.index') }}" class="btn btn-sm btn-primary">
-                    Tüm Mesajları Gör
+            <div class="card-footer text-center py-2">
+                <a href="{{ route('admin.messages.index') }}" class="btn btn-sm btn-outline-primary w-100">
+                    Tümünü Gör
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-right ms-1" width="14" height="14" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M13 18l6 -6" /><path d="M13 6l6 6" /></svg>
                 </a>
             </div>
         </div>
-    </div>
-</div>
-@else
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body text-center">
-                <p class="text-muted">Henüz mesaj bulunmuyor.</p>
+        @else
+        <div class="card h-100">
+            <div class="card-header">
+                <h3 class="card-title mb-0">Son Mesajlar</h3>
+            </div>
+            <div class="card-body d-flex align-items-center justify-content-center text-center py-5">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail-opened mb-3" width="48" height="48" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" style="color: var(--muted-foreground);"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 9l9 6l9 -6l-9 -6l-9 6" /><path d="M21 9v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" /><path d="M3 19l6 -6" /><path d="M15 13l6 6" /></svg>
+                    <p class="text-muted mb-0 small">Henüz mesaj bulunmuyor.</p>
+                </div>
             </div>
         </div>
+        @endif
     </div>
-</div>
-@endif
 
-<!-- Quick Actions -->
-<div class="row mt-3">
-    <div class="col-12">
-        <div class="card">
+    <!-- Quick Actions (25% width) -->
+    <div class="col-lg-3">
+        <div class="card h-100">
             <div class="card-header">
-                <h3 class="card-title">Hızlı Erişim</h3>
+                <h3 class="card-title mb-0">Hızlı Erişim</h3>
             </div>
-            <div class="card-body">
-                <div class="row g-2">
-                    <div class="col-6 col-md-3">
-                        <a href="{{ route('admin.sliders.create') }}" class="btn btn-outline-primary w-100">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon me-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
-                            Yeni Slayt
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <a href="{{ route('admin.products.create') }}" class="btn btn-outline-primary w-100">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon me-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
-                            Yeni Ürün
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <a href="{{ route('admin.solutions.create') }}" class="btn btn-outline-primary w-100">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon me-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
-                            Yeni Çözüm
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <a href="{{ route('admin.references.create') }}" class="btn btn-outline-primary w-100">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon me-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
-                            Yeni Referans
-                        </a>
-                    </div>
+            <div class="card-body p-2">
+                <div class="d-flex flex-column gap-2">
+                    <a href="{{ route('admin.sliders.create') }}" class="btn btn-outline-primary d-flex align-items-center gap-2 justify-content-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon flex-shrink-0" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /></svg>
+                        <span class="fw-semibold">Yeni Slayt</span>
+                    </a>
+                    <a href="{{ route('admin.products.create') }}" class="btn btn-outline-primary d-flex align-items-center gap-2 justify-content-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon flex-shrink-0" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12l0 9" /><path d="M12 12l-8 -4.5" /></svg>
+                        <span class="fw-semibold">Yeni Ürün</span>
+                    </a>
+                    <a href="{{ route('admin.solutions.create') }}" class="btn btn-outline-primary d-flex align-items-center gap-2 justify-content-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon flex-shrink-0" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7" /><path d="M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3" /><path d="M9.7 17l4.6 0" /></svg>
+                        <span class="fw-semibold">Yeni Çözüm</span>
+                    </a>
+                    <a href="{{ route('admin.references.create') }}" class="btn btn-outline-primary d-flex align-items-center gap-2 justify-content-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon flex-shrink-0" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 8h.01" /><path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z" /><path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" /><path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" /></svg>
+                        <span class="fw-semibold">Yeni Referans</span>
+                    </a>
+                    <a href="{{ route('admin.categories.create') }}" class="btn btn-outline-primary d-flex align-items-center gap-2 justify-content-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon flex-shrink-0" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4h6v6h-6z" /><path d="M14 4h6v6h-6z" /><path d="M4 14h6v6h-6z" /><path d="M14 14h6v6h-6z" /></svg>
+                        <span class="fw-semibold">Yeni Kategori</span>
+                    </a>
+                    <a href="{{ route('admin.settings.index') }}" class="btn btn-outline-secondary d-flex align-items-center gap-2 justify-content-start mt-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon flex-shrink-0" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" /><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /></svg>
+                        <span class="fw-semibold">Ayarlar</span>
+                    </a>
                 </div>
             </div>
         </div>
