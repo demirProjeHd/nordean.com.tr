@@ -7,7 +7,7 @@
     <div class="card-header">
         <h3 class="card-title">Yeni Ürün Oluştur</h3>
     </div>
-    <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data" onsubmit="console.log('Form submitting...', this); return true;">
         @csrf
         <div class="card-body">
             @if($errors->any())
