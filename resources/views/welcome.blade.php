@@ -297,13 +297,7 @@
                 adaptiveHeight: false,
                 watchCSS: false,
                 autoPlay: 4000,
-                pauseAutoPlayOnHover: true,
-                on: {
-                    ready: function() {
-                        const pageCount = this.slides.length;
-                        console.log('Solutions Flickity ready:', solutionsCount, 'cards,', pageCount, 'pages');
-                    }
-                }
+                pauseAutoPlayOnHover: true
             });
 
             // Custom navigation buttons
@@ -330,7 +324,6 @@
                 // Wait for Flickity to be ready and get actual page count
                 setTimeout(() => {
                     const pageCount = solutionsFlickity.slides.length;
-                    console.log('Creating', pageCount, 'pagination dots for Solutions');
 
                     // Hide navigation if only 1 page
                     if (pageCount <= 1) {
@@ -686,12 +679,7 @@
             adaptiveHeight: false,
             watchCSS: false,
             autoPlay: 4000,
-            pauseAutoPlayOnHover: true,
-            on: {
-                ready: function() {
-                    console.log('Flickity ready for category', categoryId);
-                }
-            }
+            pauseAutoPlayOnHover: true
         });
 
         const flickityInstance = window.productCarousels[categoryId];
@@ -743,7 +731,6 @@
             // Wait for Flickity to be ready
             setTimeout(() => {
                 const pageCount = flickityInstance.slides.length;
-                console.log('Category', categoryId + ':', productsCount, 'cards,', pageCount, 'pages');
 
                 // Hide navigation if only 1 page
                 if (pageCount <= 1) {

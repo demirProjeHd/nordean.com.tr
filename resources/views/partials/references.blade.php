@@ -247,7 +247,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Wait for Flickity to be ready
             setTimeout(() => {
                 const pageCount = referencesFlickity.slides.length;
-                console.log('References:', referencesCount, 'cards,', pageCount, 'pages');
 
                 // Hide navigation if only 1 page
                 if (pageCount <= 1) {
